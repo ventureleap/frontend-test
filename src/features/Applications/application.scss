@@ -1,0 +1,13 @@
+/**
+ * $size: Font-size to be converted from `px` to `rem`
+ * $base: Base font-size (Change its value as per your need)
+ * @return void
+ */
+@mixin font-size($sizeValue: 1.6) {
+	font-size: ($sizeValue * 10) + px;
+	font-size: $sizeValue + rem;
+}
+
+.custom-heading-font-size {
+	@include font-size(1.6);
+}
