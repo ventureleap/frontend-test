@@ -1,0 +1,38 @@
+@import '~antd/dist/antd.css';
+@import './config';
+@import './form';
+@import './table';
+// include all of Bootstrap
+@import 'bootstrap/scss/bootstrap';
+
+.App {
+    height: 100vh;
+    @include media-breakpoint-down('sm') {
+      height: 80vh; 
+    }
+}
+
+.deactive {
+	color: rgba(255, 255, 255, 0.55);
+	cursor: pointer;
+}
+
+@mixin font-size($size, $base: 16) {
+	font-size: $size; 
+	font-size: ($size / $base) * 1rem;
+}
+
+.container {
+	.container__page-title {
+		@include font-size(20);
+	}
+}
+
+
+.ant-row {
+	margin: 0px !important;
+}
+
+.center-text {
+	text-align: center;
+}
