@@ -1,0 +1,15 @@
+/*=============================================== TitleFlex ===============================================*/
+
+.Container {
+    @include flexbox(center, space-between);
+
+    @include mobile() {
+        @include flexbox(flex-start, flex-start);
+        flex-direction: column;
+
+        h1,
+        h2 {
+            margin-bottom: $spacer-s;
+        }
+    }
+}

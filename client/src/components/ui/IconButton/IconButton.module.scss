@@ -1,0 +1,32 @@
+/*=============================================== IconButton ===============================================*/
+
+.Button {
+    $size: 24px;
+    width: $size;
+    height: $size;
+    @include inline-flex(center, center);
+    padding: 0;
+    border-radius: 50%;
+    border: none;
+    transition: $transition-short;
+
+    &.primary {
+        color: $color-primary;
+        background-color: $color-primary-5;
+
+        &:hover {
+            color: $color-white;
+            background-color: $color-primary;
+        }
+    }
+
+    &.danger {
+        color: $color-danger;
+        background-color: $color-danger-5;
+
+        &:hover {
+            color: $color-white;
+            background-color: $color-danger ;
+        }
+    }
+}

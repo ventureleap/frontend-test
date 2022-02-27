@@ -1,0 +1,14 @@
+/*=============================================== Alert ===============================================*/
+
+.Container {
+    background-color: $color-danger-5;
+    border: 1px solid $color-danger;
+    padding: $spacer-s;
+    border-radius: $radius-m;
+}
+
+.Modal {
+    width: 400px;
+    @include grid(1fr, 0, $spacer-s);
+    align-content: start;
+}

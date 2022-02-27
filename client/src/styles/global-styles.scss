@@ -1,0 +1,68 @@
+/*=============================================== Global styles ===============================================*/
+
+html,
+body {
+    font-family: $font-family;
+    line-height: $line-height;
+    font-weight: $weight-regular;
+
+    &.stop-scrolling {
+        height: 100vh;
+        overflow: hidden;
+    }
+}
+
+/*========================= Typography =========================*/
+
+h1 {
+    @include font-size($font-size-h1);
+    font-weight: $weight-bold;
+}
+
+h2 {
+    @include font-size($font-size-h2);
+    font-weight: $weight-bold;
+}
+
+h3 {
+    @include font-size($font-size-h3);
+    font-weight: $weight-bold;
+}
+
+h4 {
+    @include font-size($font-size-h4);
+    font-weight: $weight-bold;
+}
+
+h5 {
+    @include font-size($font-size-h5);
+    font-weight: $weight-bold;
+}
+
+h6 {
+    @include font-size($font-size-h6);
+    font-weight: $weight-bold;
+}
+
+p {
+    @include font-size($font-size-body);
+
+    strong {
+        font-weight: $weight-bold;
+    }
+
+    em {
+        font-style: italic;
+    }
+
+    a {
+        text-decoration: none;
+        color: $color-primary;
+        transition: $transition-short;
+        font-weight: $weight-bold;
+
+        &:hover {
+            color: $color-primary-70;
+        }
+    }
+}

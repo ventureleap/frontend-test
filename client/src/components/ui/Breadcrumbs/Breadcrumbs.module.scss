@@ -1,0 +1,10 @@
+/*=============================================== Breadcrumbs ===============================================*/
+
+.Container {
+    @include flexbox(center, flex-start);
+
+    & > *:not(:last-child):after {
+        content: "/";
+        margin: 0 $spacer-xxs;
+    }
+}

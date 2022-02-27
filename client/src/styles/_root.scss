@@ -1,0 +1,76 @@
+/*=============================================== Root ===============================================*/
+
+// When needed inside the JSX, use CSS variables instead
+
+:root {
+    // Colors
+    --color-primary: rgb(29, 53, 87);
+    --color-primary-70: rgb(55, 100, 164);
+    --color-primary-5: rgb(236, 241, 249);
+    --color-secondary: rgb(69, 123, 157);
+    --color-secondary-70: rgb(127, 171, 199);
+    --color-secondary-5: rgb(237, 243, 247);
+    --color-success: rgb(140, 216, 103);
+    --color-success-70: rgb(203, 237, 186);
+    --color-success-5: rgb(240, 250, 235);
+    --color-danger: rgb(214, 73, 51);
+    --color-danger-70: rgb(231, 149, 136);
+    --color-danger-5: rgb(251, 236, 234);
+    --color-warning: rgb(237, 125, 58);
+    --color-warning-70: rgb(246, 187, 152);
+    --color-warning-5: rgb(253, 240, 232);
+    --color-dark-gray: rgb(51, 51, 51);
+    --color-gray: rgb(150, 150, 150);
+    --color-light-gray: rgb(209, 209, 209);
+    --color-black: rgb(0, 0, 0);
+    --color-white: rgb(255, 255, 255);
+    --color-overlay: rgba(0, 0, 0, 0.5);
+
+    // Shadows
+    --shadow-card: 0 0 6px -1px rgb(0 0 0 / 0.1),
+        0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-header: 0 10px 15px -3px rgb(0 0 0 / 0.1),
+        0 4px 6px -4px rgb(0 0 0 / 0.1);
+
+    // Spacers
+    --spacer-xxl: 48px;
+    --spacer-xl: 32px;
+    --spacer-l: 24px;
+    --spacer-m: 16px;
+    --spacer-s: 12px;
+    --spacer-xs: 8px;
+    --spacer-xxs: 4px;
+
+    // Typography
+    --font-family: "Lato", sans-serif;
+
+    --line-height: 1.5;
+
+    --weight-regular: 400;
+    --weight-bold: 900;
+
+    // Transitions
+    --transition-short: all 0.2s ease;
+    --transition-long: all 0.5s ease;
+
+    // Radiuses
+    --radius-xl: 16px;
+    --radius-l: 12px;
+    --radius-m: 8px;
+    --radius-s: 4px;
+    --radius-round: 99em;
+
+    // Layouts
+    --wrapper: 1fr 800px 1fr;
+    --wrapper-tablet: 5vw 1fr 5vw;
+    --wrapper-form: 1fr 400px 1fr;
+    --wrapper-full: 10vw 1fr 10vw;
+    --wrapper-full-tablet: 5vw 1fr 5vw;
+    --wrapper-list: 200px 1fr;
+    --wrapper-list-mobile: 1fr;
+
+    --header-height: 68px;
+
+    --container-padding: calc(var(--spacer-xxl) + var(--header-height)) 0
+        var(--spacer-xxl);
+}

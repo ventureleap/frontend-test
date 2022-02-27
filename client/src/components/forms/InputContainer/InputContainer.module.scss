@@ -1,0 +1,16 @@
+/*=============================================== InputContainer ===============================================*/
+
+.Container {
+    position: relative;
+    @include grid(1fr, 0, $spacer-xxs);
+    align-content: start;
+}
+
+.Label {
+    color: $color-primary;
+    font-weight: $weight-bold;
+}
+
+.Helper {
+    @include font-size($font-size-helper);
+}
