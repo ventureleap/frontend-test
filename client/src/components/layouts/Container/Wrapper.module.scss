@@ -1,0 +1,26 @@
+/*=============================================== Wrapper ===============================================*/
+
+.Wrapper {
+    @include grid($wrapper, 0, 0);
+    align-content: start;
+
+    &.form {
+        @include grid($wrapper-form, 0, 0);
+    }
+
+    &.full {
+        @include grid($wrapper-full, 0, 0);
+
+        @include tablet() {
+            @include grid($wrapper-full-tablet, 0, 0);
+        }
+    }
+
+    & > * {
+        grid-column: 2;
+    }
+
+    @include tablet() {
+        @include grid($wrapper-tablet, 0, 0);
+    }
+}

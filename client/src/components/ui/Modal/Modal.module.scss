@@ -1,0 +1,21 @@
+/*=============================================== Modal ===============================================*/
+
+.Container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    display: none;
+    z-index: 999;
+    background-color: $color-overlay;
+    padding: 5vw;
+
+    & > div {
+        max-width: 400px;
+    }
+}
+
+.Open {
+    @include flexbox(center, center);
+}

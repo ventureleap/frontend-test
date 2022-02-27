@@ -1,0 +1,122 @@
+/*=============================================== Header ===============================================*/
+
+.Header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: $spacer-m 5vw;
+    @include flexbox(center, space-between);
+    height: $header-height;
+    transition: $transition-short;
+    z-index: 100;
+}
+
+.Scrolled {
+    background-color: $color-white;
+    box-shadow: $shadow-header;
+}
+
+.Link {
+    color: $color-primary;
+    text-decoration: none;
+    @include font-size($font-size-body);
+    transition: $transition-short;
+    border: none;
+    background-color: transparent;
+    padding: 0;
+
+    &:hover {
+        color: $color-primary-70;
+    }
+}
+
+.Logo {
+    font-weight: $weight-bold;
+}
+
+.Active {
+    font-weight: $weight-bold;
+}
+
+.Nav {
+    @include flexbox(center, flex-start);
+
+    & > *:not(:last-child) {
+        margin-right: $spacer-s;
+    }
+
+    @include mobile() {
+        flex-direction: column;
+        position: absolute;
+        top: -130px;
+        left: 0;
+        padding: 0 5vw;
+        background-color: $color-white;
+        width: 100%;
+        @include flexbox(flex-start, flex-start);
+        box-shadow: $shadow-header;
+        padding-bottom: $spacer-s;
+        transition: $transition-short;
+
+        & > *:not(:last-child) {
+            margin-right: 0;
+            margin-bottom: $spacer-s;
+        }
+    }
+}
+
+.NavOpen {
+    top: 66px;
+}
+
+.Burger {
+    display: none;
+
+    @include mobile() {
+        display: inline;
+        width: 30px;
+        height: 20px;
+        position: relative;
+        border: none;
+        background: none;
+
+        span {
+            $height: 2px;
+            background-color: $color-primary;
+            width: 100%;
+            height: $height;
+            position: absolute;
+            left: 0;
+            transition: $transition-short;
+
+            &:first-child {
+                top: 0;
+            }
+
+            &:nth-child(2) {
+                top: calc(50% - #{$height} / 2);
+            }
+
+            &:last-child {
+                bottom: 0;
+            }
+        }
+    }
+}
+
+.BurgerOpen span {
+    &:first-child {
+        top: 45%;
+        transform: rotate(45deg);
+    }
+
+    &:nth-child(2) {
+        width: 0;
+    }
+
+    &:last-child {
+        bottom: 45%;
+        transform: rotate(-45deg);
+    }
+}

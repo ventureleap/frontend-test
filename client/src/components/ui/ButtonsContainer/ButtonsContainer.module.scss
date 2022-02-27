@@ -1,0 +1,9 @@
+/*=============================================== ButtonContainer ===============================================*/
+
+.Container {
+    @include flexbox(center, flex-start);
+
+    & > *:not(:last-child) {
+        margin-right: $spacer-xs;
+    }
+}

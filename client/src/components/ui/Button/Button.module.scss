@@ -1,0 +1,47 @@
+/*=============================================== Button ===============================================*/
+
+.Button {
+    border: none;
+    background: none;
+    padding: $spacer-xs $spacer-s;
+    transition: $transition-short;
+    @include font-size($font-size-body);
+    border-radius: $radius-m;
+    font-weight: $weight-bold;
+    text-decoration: none;
+    @include flexbox(center, center);
+    line-height: $line-height;
+    justify-self: start;
+
+    &.primary {
+        background-color: $color-primary;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-primary-70;
+        }
+
+        &:disabled {
+            background-color: $color-light-gray;
+            color: $color-dark-gray;
+            cursor: not-allowed;
+        }
+    }
+
+    &.text {
+        color: $color-primary;
+
+        &:hover {
+            color: $color-primary-70;
+        }
+    }
+
+    &.danger {
+        background-color: $color-danger;
+        color: $color-white;
+
+        &:hover {
+            background-color: $color-danger-70;
+        }
+    }
+}

@@ -1,0 +1,44 @@
+/*=============================================== Inputs ===============================================*/
+
+.Input {
+    position: relative;
+    z-index: 0;
+    width: 100%;
+    height: 35px;
+    padding: $spacer-xs;
+    border-radius: $radius-s;
+    border: 1px solid $color-light-gray;
+    outline: none;
+    transition: $transition-short;
+
+    &:focus {
+        border-color: $color-primary;
+    }
+
+    &:disabled {
+        border: none;
+        color: $color-dark-gray;
+        cursor: not-allowed;
+    }
+}
+
+.Password {
+    position: relative;
+    height: 35px;
+}
+
+.ButtonPassword {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    @include inline-flex(center, center);
+    border: none;
+    background-color: transparent;
+    color: $color-primary;
+    transition: $transition-short;
+
+    &:hover {
+        color: $color-primary-70;
+    }
+}

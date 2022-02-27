@@ -1,121 +1,29 @@
-# Hello future leaper !
----
-### FRONT END DEVELOPER TEST
-***
-We prepared a Simple react & webpack project for our recruitment process and added as much love as we do in our daily projects.
+# Challenge Venture Leap
 
-Clone this clean repository into your workspace, do your magic and create pull request.
+## Disclaimer
 
-Hope you will have fun !
+Because I had a lot of bugs with the API over the weekend, I decided to code my own backend.
 
----
-**STACK:**
----
-+ yarn
-+ flow
-+ webpack
-+ react
-+ redux
-+ redux-thunk
-+ scss (bem methodology)
-+ es6
+## Install the app
 
-**TODO:**
----
-**JS/HTML Part:**
-+ create signup form (we prefer using redux-form module) with API integration (/users)
-    * first name (required)
-    * last name (required)
-    * email (required)
-+ add a login page - using API endpoint (/users/login)
-+ create application list page - using API endpoint
-+ display application page - using API endpoint (/applications)
-+ display current active navigation breadcrumb
+Download the repo, open it in a terminal and run `yarn install`. Then, create a `.env` file at the root folder and paste there the credentials sent by email.
 
----
-**CSS Part:**
-+ stick page header to the top - independent on scroll position
-+ write a (scss) mixin that will calc & return font-size based on rem with px fallback for older browsers
-+ highlight current active navigation item in breadcrumb
+## Run the app
 
----
-MOCKED API ROUTES
-===
+Open the root folder in a terminal and run `yarn dev`. Thanks to [Concurrently](https://yarnpkg.com/package/concurrently) we can run the server and the front end at the same time without having to open two terminal windows.
 
-User
----
+## Tech stack
 
-+ ***Register user***
+### Front end
 
-  [POST] https://frontend-test.getsandbox.com/users
-  
-  ```
-  {
-  "username":"fred",
-  "password":"fred"
-  }
-  ```
-+ ***Login***
+-   React
+-   Axios
+-   SCSS
+-   Craco: to import selected SCSS files globally
 
-  [POST] https://frontend-test.getsandbox.com/users/login
+### Back end
 
-  ```
-  {
-  "username":"fred",
-  "password":"fred"
-  }
-  ```
-  => Session ID stored in a cookie : sessionId=[uuid]
-
-
-+ ***User info*** 
-
-  [GET] https://frontend-test.getsandbox.com/users (need Auth Cookies)
-
-Application
----
-
-+ ***Add application*** 
-
-  [POST] https://frontend-test.getsandbox.com/applications (need Auth Cookies)
-  ```
-  {
-  "id": "1",
-  "name": "App1",
-  "secret": "secretsecretsecretsecret",
-  "lang":"php",
-  "version": 1
-  }
-  ```
-+ ***List application***
-
-  [GET] https://frontend-test.getsandbox.com/applications (need Auth Cookies)
-  
-  Param:
-  + lang : ```?lang=php```
-  + version: ```?lang=version```
-
-
-+ ***Update application***
-    
-  [PUT] https://frontend-test.getsandbox.com/applications/[id] (need Auth Cookies)
-    ```
-    {
-    "username":"admin"
-    }
-    ```
-
-+ ***Delete application***
-
-  [DELETE] https://frontend-test.getsandbox.com/applications/[id]  (need Auth Cookies)
-
-Sandbox
----
-+ ***Reset sandbox***
-
-  [DELETE] https://frontend-test.getsandbox.com/sandbox 
----
-
-Please pay attention to flow types and eslint warnings / errors.
-
-You can of course use typescript.
+-   Express
+-   MongoDb
+-   JWT
+-   Bcrypt js

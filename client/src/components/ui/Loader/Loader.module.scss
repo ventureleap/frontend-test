@@ -1,0 +1,22 @@
+/*=============================================== Loader ===============================================*/
+
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.Loader {
+    border-radius: 50%;
+    display: inline-block;
+    box-sizing: border-box;
+    animation: spin 1s linear infinite;
+    margin-right: $spacer-xs;
+}
+
+.Full {
+    grid-column: span 2;
+}

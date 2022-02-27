@@ -1,0 +1,9 @@
+/*=============================================== Pagination ===============================================*/
+
+.Container {
+    @include flexbox(center, center);
+
+    & > button:not(:last-child) {
+        margin-right: $spacer-xs;
+    }
+}

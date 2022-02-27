@@ -1,0 +1,10 @@
+/*=============================================== AppCard ===============================================*/
+
+.Container {
+    background-color: $color-white;
+    box-shadow: $shadow-card;
+    @include grid(1fr, 0, $spacer-xxs);
+    padding: $spacer-s;
+    border-radius: $radius-m;
+    align-content: start;
+}

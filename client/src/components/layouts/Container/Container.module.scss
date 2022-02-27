@@ -1,0 +1,7 @@
+/*=============================================== Container component ===============================================*/
+
+.Container {
+    padding: $container-padding;
+    @include grid(1fr, 0, $spacer-l);
+    align-content: start;
+}

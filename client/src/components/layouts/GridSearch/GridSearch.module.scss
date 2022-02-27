@@ -1,0 +1,10 @@
+/*=============================================== GridSearch ===============================================*/
+
+.Container {
+    @include grid($wrapper-list, $spacer-l, 0);
+    align-content: start;
+
+    @include mobile() {
+        @include grid($wrapper-list-mobile, 0, $spacer-l);
+    }
+}
