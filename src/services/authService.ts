@@ -18,9 +18,6 @@ export class authService {
                 'Set-Cookie': true,
             },
         });
-        console.log(response, 'response axios.default0');
-        console.log(response.headers, 'response axios.default');
-        console.log(response.cookie, 'response axios.default2');
         return response;
     }
 

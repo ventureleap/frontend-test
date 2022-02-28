@@ -31,6 +31,9 @@ const LoginPage = () => {
         if (await isAuthenticated) {
             message.success('Login Success', 2);
         }
+        else {
+            setErrorMessage("Please check username and password combination!");
+        }
     };
 
     const checkSubmit = async () => {

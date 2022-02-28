@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Row, Col, Tooltip, Result, message } from 'antd';
+import { Form, Input, Button, Row, Col, Tooltip, Result } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Field, reduxForm } from 'redux-form';
 import { FormInput } from '../../components/ReduxForm/formInput';
@@ -8,6 +8,7 @@ import { authService } from '../../services';
 import { RegisterModel } from '../../models';
 import { SubmissionError } from 'redux-form';
 import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom';
 
 const FirstNameField = FormInput(Input);
 const LastNameField = FormInput(Input);
@@ -22,6 +23,7 @@ const SignUp = (props: any) => {
     const [errorMessage, setErrorMessage] = useState('');
     const sleep = (ms: any) => new Promise((resolve: any) => setTimeout(resolve, ms));  
     const { pristine, reset, submitting } = props;
+    const history = useHistory();
 
     const checkSubmit = async () => {
         return sleep(1000) // simulate server latency
@@ -54,7 +56,7 @@ const SignUp = (props: any) => {
                     showConfirmButton: false,
                     timer: 2500
                 });
-                window.open('/login', '_self');
+                history.push("login");
             } else if (result.error) {
                 Swal.fire({
                     title: 'Attention!',

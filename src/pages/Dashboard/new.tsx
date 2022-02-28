@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { Form, Input, Button, Row, Col, Tooltip, Result, message } from 'antd';
+import React, { useState } from 'react';
+import { Form, Input, Button, Row, Col, Tooltip } from 'antd';
 import { InfoCircleOutlined } from '@ant-design/icons';
 import { Field, reduxForm } from 'redux-form';
 import { FormInput } from '../../components/ReduxForm/formInput';
@@ -8,6 +8,7 @@ import { ApplicationModel } from '../../models';
 import { SubmissionError } from 'redux-form';
 import Swal from 'sweetalert2';
 import { applicationService } from '../../services';
+import { useHistory } from 'react-router-dom';
 
 const IdField = FormInput(Input);
 const NameField = FormInput(Input);
@@ -23,11 +24,11 @@ const NewApplication = (props: any) => {
     const [lang, setLang] = useState('');
     const [version, setVersion] = useState('');
     const [secret, setSecret] = useState('');
+    const history = useHistory();
 
     const [errorMessage, setErrorMessage] = useState('');
     const sleep = (ms: any) => new Promise((resolve: any) => setTimeout(resolve, ms));
-    const { handleSubmit, pristine, reset, submitting, error } = props;
-
+    const { pristine, reset, submitting } = props;
 
     const checkSubmit = async () => {
         return sleep(1000)
@@ -63,7 +64,7 @@ const NewApplication = (props: any) => {
                     showConfirmButton: false,
                     timer: 2500
                 });
-                window.open('/dashboard', '_self');
+                history.push("dashboard");
             } 
            else {
                 Swal.fire({

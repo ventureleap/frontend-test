@@ -1,0 +1,15 @@
+# node.js
+#
+node_modules
+npm-debug.log
+yarn-error.log
+
+dist
+
+
+.DS_Store
+.babelrc
+.eslintrc.js
+.prettierrc.js
+
+package-lock.json

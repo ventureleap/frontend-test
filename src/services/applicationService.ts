@@ -1,8 +1,6 @@
-import { RegisterModel } from '../models';
 import * as apiHelper from '../utils/apiHelper';
 import Axios from 'axios';
 import settings from '../models/settings.model';
-import { StorageHelper } from '../utils';
 
 export class applicationService {
 

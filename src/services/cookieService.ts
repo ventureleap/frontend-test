@@ -7,7 +7,7 @@ export class cookieService {
         cookie.get(key);
     }
 
-    async set(key: string, value: string, options?: Object): Promise<any> {
+    async set(key: string, value: string, options?: any): Promise<any> {
         cookie.set(key, value, options);
     }
 
