@@ -1,0 +1,30 @@
+
+.form {
+    .form__input{
+        box-shadow: 0ch;
+        border-radius: 5px;
+    }
+    .form__sign-up-text {
+        margin-left: 10px !important;
+        text-align: center;
+        width: 100%;
+    }
+    .form__login-button {
+        -webkit-box-shadow: 5px 5px 35px 5px (0, 0, 0, 0.1); 
+        box-shadow: 5px 5px 35px 5px (0, 0, 0, 0.1); 
+    }
+
+    .form__reset-button {
+        -webkit-box-shadow: 5px 5px 35px 5px (0, 0, 0, 0.1); 
+        box-shadow: 5px 5px 35px 5px (0, 0, 0, 0.1); 
+    }
+
+    .form__submit-button {
+        -webkit-box-shadow: 5px 5px 35px 5px (0, 0, 0, 0.1); 
+        box-shadow: 5px 5px 35px 5px (0, 0, 0, 0.1); 
+        margin-left: 10px;
+    }
+    .form__error-message {
+        color: red;
+    }
+}

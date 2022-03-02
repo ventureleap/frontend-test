@@ -1,0 +1,38 @@
+$dark-color: #333;
+$light-color: #fff;
+$header-color: gray;
+$nth-color: #fafafa;
+$second-color: gray;
+
+.table{
+    background-color: #f5fcff;    
+    .table__thead{
+        background-color:grey;
+        color: $light-color;
+    }
+
+    .table__tbody{
+        background-color:white;
+        color: $dark-color;
+    }
+
+    .table__tr{  
+        &:nth-child(2n){
+            background-color:$nth-color;
+            color: $dark-color;
+        }
+        &:hover {
+            color: $second-color;
+        }
+    }
+
+    .table__th{
+        padding: 16px;
+    }
+    
+    .table__td{
+        text-align: center;
+        color: $dark-color !important;
+    }
+}
+
