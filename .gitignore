@@ -11,5 +11,6 @@ dist
 .babelrc
 .eslintrc.js
 .prettierrc.js
+.flowconfig 
 
 package-lock.json
