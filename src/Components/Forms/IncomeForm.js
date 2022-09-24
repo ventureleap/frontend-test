@@ -3,6 +3,7 @@ import "./IncomeForm.scss";
 import axios from "axios";
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
+import { useCookies } from "react-cookie";
 
 function IncomeForm() {
   const [changeBtn, setChangeBtn] = useState(true);
@@ -18,6 +19,7 @@ function IncomeForm() {
     }
   };
 
+  const [cookies, setCookie] = useCookies(["sessionId"]);
   const handleSignUpSubmit = async (value) => {
     axios
       .post(
@@ -46,14 +48,16 @@ function IncomeForm() {
       });
   };
   const handleLoginSubmit = async (value) => {
-    console.log(value);
     axios
       .post("https://frontend-test.getsandbox.com/users/login", {
         username: value.username,
         password: value.password,
       })
       .then(function (response) {
-        console.log(response);
+        console.log(response.data);
+        const sessionId = response.data.session;
+        setCookie("sessionId", sessionId, { path: "/" });
+        console.log(cookies.sessionId);
       })
       .catch(function (error) {
         console.log(error);

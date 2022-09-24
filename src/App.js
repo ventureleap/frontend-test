@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Route } from "react-router-dom";
 function App() {
   return (
     <Router className="app">
-      <Route path="/users">
+      <Route path="/">
         <IncomeForm />
       </Route>
     </Router>
