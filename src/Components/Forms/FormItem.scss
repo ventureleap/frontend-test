@@ -1,0 +1,22 @@
+.form-item{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    &__field{
+        height: 40px;
+        padding: 0 10px;
+        margin-bottom: 10px;
+
+        border: 1px solid rgb(199, 199, 199);
+        border-radius: 5px;
+    }
+    &__btn{
+        height: 40px;
+
+        color: white;
+        border-radius: 5px;
+        border: none;
+        background: linear-gradient(30deg,#a445b2 , #fa4299);
+    }
+    
+}

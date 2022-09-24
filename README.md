@@ -1,121 +1,70 @@
-# Hello future leaper !
----
-### FRONT END DEVELOPER TEST
-***
-We prepared a Simple react & webpack project for our recruitment process and added as much love as we do in our daily projects.
+# Getting Started with Create React App
 
-Clone this clean repository into your workspace, do your magic and create pull request.
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-Hope you will have fun !
+## Available Scripts
 
----
-**STACK:**
----
-+ yarn
-+ flow
-+ webpack
-+ react
-+ redux
-+ redux-thunk
-+ scss (bem methodology)
-+ es6
+In the project directory, you can run:
 
-**TODO:**
----
-**JS/HTML Part:**
-+ create signup form (we prefer using redux-form module) with API integration (/users)
-    * first name (required)
-    * last name (required)
-    * email (required)
-+ add a login page - using API endpoint (/users/login)
-+ create application list page - using API endpoint
-+ display application page - using API endpoint (/applications)
-+ display current active navigation breadcrumb
+### `npm start`
 
----
-**CSS Part:**
-+ stick page header to the top - independent on scroll position
-+ write a (scss) mixin that will calc & return font-size based on rem with px fallback for older browsers
-+ highlight current active navigation item in breadcrumb
+Runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
----
-MOCKED API ROUTES
-===
+The page will reload when you make changes.\
+You may also see any lint errors in the console.
 
-User
----
+### `npm test`
 
-+ ***Register user***
+Launches the test runner in the interactive watch mode.\
+See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
 
-  [POST] https://frontend-test.getsandbox.com/users
-  
-  ```
-  {
-  "username":"fred",
-  "password":"fred"
-  }
-  ```
-+ ***Login***
+### `npm run build`
 
-  [POST] https://frontend-test.getsandbox.com/users/login
+Builds the app for production to the `build` folder.\
+It correctly bundles React in production mode and optimizes the build for the best performance.
 
-  ```
-  {
-  "username":"fred",
-  "password":"fred"
-  }
-  ```
-  => Session ID stored in a cookie : sessionId=[uuid]
+The build is minified and the filenames include the hashes.\
+Your app is ready to be deployed!
 
+See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-+ ***User info*** 
+### `npm run eject`
 
-  [GET] https://frontend-test.getsandbox.com/users (need Auth Cookies)
+**Note: this is a one-way operation. Once you `eject`, you can't go back!**
 
-Application
----
+If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-+ ***Add application*** 
+Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
 
-  [POST] https://frontend-test.getsandbox.com/applications (need Auth Cookies)
-  ```
-  {
-  "id": "1",
-  "name": "App1",
-  "secret": "secretsecretsecretsecret",
-  "lang":"php",
-  "version": 1
-  }
-  ```
-+ ***List application***
+You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
 
-  [GET] https://frontend-test.getsandbox.com/applications (need Auth Cookies)
-  
-  Param:
-  + lang : ```?lang=php```
-  + version: ```?lang=version```
+## Learn More
 
+You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-+ ***Update application***
-    
-  [PUT] https://frontend-test.getsandbox.com/applications/[id] (need Auth Cookies)
-    ```
-    {
-    "username":"admin"
-    }
-    ```
+To learn React, check out the [React documentation](https://reactjs.org/).
 
-+ ***Delete application***
+### Code Splitting
 
-  [DELETE] https://frontend-test.getsandbox.com/applications/[id]  (need Auth Cookies)
+This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-Sandbox
----
-+ ***Reset sandbox***
+### Analyzing the Bundle Size
 
-  [DELETE] https://frontend-test.getsandbox.com/sandbox 
----
+This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-Please pay attention to flow types and eslint warnings / errors.
+### Making a Progressive Web App
 
-You can of course use typescript.
+This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+
+### Advanced Configuration
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+
+### Deployment
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+
+### `npm run build` fails to minify
+
+This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)

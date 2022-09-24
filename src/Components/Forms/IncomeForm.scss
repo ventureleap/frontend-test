@@ -1,0 +1,48 @@
+.form{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    height: 100vh;
+   &__wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+
+    width: 360px;
+    padding: 30px;
+    margin-bottom: 40px;
+    
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 15px 20px rgba(0,0,0,25%);
+
+    &__selector{
+        margin-bottom: 20px;
+        .active{
+            background: linear-gradient(30deg,#a445b2 , #fa4299);
+            color: white;
+        }
+    }
+   }
+   &__message{
+    width: 360px;
+    padding:15px 30px;
+
+    border-radius: 5px;
+    font-weight: bold;
+
+    &--success{
+        color:#0f5132;
+        background-color: #d1e7dd;
+        border: 1px solid #badbcc;
+    }
+    &--danger{
+        color: #842029;
+        background-color: #f8d7da;
+        border: 1px solid #f5c2c7;
+    }
+   }
+}
