@@ -1,12 +1,17 @@
 import "./App.scss";
-import IncomeForm from "./Components/Forms/IncomeForm";
+import DynamicForm from "./Components/Forms/DynamicForm";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import ApplicationList from "./Components/Application/ApplicationsList";
+import React from "react";
 
 function App() {
   return (
     <Router className="app">
-      <Route path="/">
-        <IncomeForm />
+      <Route exact path="/">
+        <DynamicForm />
+      </Route>
+      <Route exact path="/applications">
+        <ApplicationList />
       </Route>
     </Router>
   );

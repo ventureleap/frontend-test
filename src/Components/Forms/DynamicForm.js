@@ -1,18 +1,20 @@
 import React, { useState } from "react";
-import "./IncomeForm.scss";
+import "./DynamicForm.scss";
 import axios from "axios";
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
 import { useCookies } from "react-cookie";
+import { useHistory } from "react-router-dom";
 
 function IncomeForm() {
   const [changeBtn, setChangeBtn] = useState(true);
   const [message, setMessage] = useState("");
+  const history = useHistory();
 
   const alert = (msg) => {
-    if (msg == "") {
+    if (msg === "") {
       return null;
-    } else if (msg == "ok") {
+    } else if (msg === "ok") {
       return "User successfully created:)";
     } else {
       return "User already exists!";
@@ -23,7 +25,7 @@ function IncomeForm() {
   const handleSignUpSubmit = async (value) => {
     axios
       .post(
-        "https://frontend-test.getsandbox.com/users",
+        "http://localhost:3000/api/users",
         {
           username: value.username,
           password: value.password,
@@ -49,15 +51,19 @@ function IncomeForm() {
   };
   const handleLoginSubmit = async (value) => {
     axios
-      .post("https://frontend-test.getsandbox.com/users/login", {
+      .post("http://localhost:3000/api/users/login", {
         username: value.username,
         password: value.password,
       })
       .then(function (response) {
         console.log(response.data);
         const sessionId = response.data.session;
-        setCookie("sessionId", sessionId, { path: "/" });
-        console.log(cookies.sessionId);
+        setCookie("sessionId", sessionId, {
+          secure: true,
+          sameSite: "None",
+        });
+        console.log("cookie", cookies.sessionId);
+        history.push("/applications");
       })
       .catch(function (error) {
         console.log(error);
@@ -69,26 +75,26 @@ function IncomeForm() {
       <div className="form__wrapper">
         <div className="form__wrapper__selector">
           <button
-            className={changeBtn == true ? "active" : null}
+            className={changeBtn === true ? "active" : null}
             onClick={() => setChangeBtn(!changeBtn)}
           >
             Sign up
           </button>
           <button
-            className={changeBtn == false ? "active" : null}
+            className={changeBtn === false ? "active" : null}
             onClick={() => setChangeBtn(!changeBtn)}
           >
             Log in
           </button>
         </div>
 
-        {changeBtn == true ? (
+        {changeBtn === true ? (
           <SignUpForm onSubmit={handleSignUpSubmit} />
         ) : (
           <LoginForm onSubmit={handleLoginSubmit} />
         )}
       </div>
-      {alert(message) == null ? null : alert(message) ==
+      {alert(message) === null ? null : alert(message) ===
         "User successfully created:)" ? (
         <div className="form__message form__message--success">
           {alert(message)}
