@@ -3,6 +3,7 @@ import DynamicForm from "./Components/Forms/DynamicForm";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import ApplicationList from "./Components/Application/ApplicationsList";
 import React from "react";
+import AddApplcation from "./Components/Application/Add/AddApplication";
 
 function App() {
   return (
@@ -12,6 +13,9 @@ function App() {
       </Route>
       <Route exact path="/applications">
         <ApplicationList />
+      </Route>
+      <Route exact path="/applications/create">
+        <AddApplcation />
       </Route>
     </Router>
   );

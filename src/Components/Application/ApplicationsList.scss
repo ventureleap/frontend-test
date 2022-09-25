@@ -2,45 +2,4 @@
     height: fit-content;
     width: 100%;
     background-color: white;
-    &__header{
-        display: flex;
-        flex-direction: column;
-
-        position: sticky;
-        top: 0;
-        width: 100%;
-        padding:10px 20px;
-        margin-bottom: 15px;
-
-        color: white;
-        background: linear-gradient(30deg,#a445b2 , #fa4299);
-        box-shadow: 0 7px 10px rgba(0,0,0,15%);
-        &__title{}
-        &__breadcrumb{
-            display: flex;
-            .breadcrumb-item{
-                padding-right: 10px;
-                &:hover{
-                    cursor: pointer;
-                }
-                &::before{
-                    display: none!important;
-                }
-                &:after{
-                    position: absolute;
-                    content: "/";
-                }
-                &:last-child{
-                    padding-left: 10px;
-
-                    border-radius: 10px;
-                    background-color: #fff;
-                    color: #a445b2;
-                    &:after{
-                        content: "";
-                    }
-                }
-            }
-        }
-    }
 }
