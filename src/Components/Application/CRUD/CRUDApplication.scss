@@ -1,0 +1,55 @@
+.crud-form{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &__card{
+        display: flex;
+        flex-direction: column;
+
+        width: 40%;
+        padding: 30px;
+
+        border-radius:10px;
+        box-shadow: 0 7px 15px rgb(0 0 0 / 15%);
+        input{
+            margin-bottom: 10px;
+            padding: 5px;
+        }
+        &__bottom{
+            display: flex;
+            justify-content: space-between;
+            .btn-item{
+                display: flex;
+                align-items: center;
+                justify-content: center;
+
+                height: 35px;
+                width: 100px;
+                padding: 5px 10px;
+
+                border-radius: 5px;
+                text-decoration: none;
+                
+                &--red{
+                    background-color: #cf3945;
+                    border: 2px solid #cf3945;
+                    color: white;
+                    &:hover{  
+                        transition:0.3s ease-out;                      
+                        background-color: #be1f2d;
+                    }
+                }
+                &--green{
+                    background-color: #28a745;
+                    border: 2px solid #28a745;
+                    color: white;
+                    &:hover{
+                        transition:0.3s ease-out;
+                        background-color:#149131;
+                    }
+                }
+            }
+        }
+
+    }
+}

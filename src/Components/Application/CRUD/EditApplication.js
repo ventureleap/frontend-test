@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useHistory, useParams } from "react-router-dom";
 import ReactLoading from "react-loading";
 import Header from "../../Layout/Header";
+import "./CRUDApplication.scss";
 
 function EditApplcation() {
   const [id, setId] = useState();
@@ -51,52 +52,60 @@ function EditApplcation() {
   };
 
   console.log(applications);
-  
+
   return (
     <>
-      <Header title={`Edit Application with name:${name}`} />
       {loading && <ReactLoading type="balls" color="#dddddd" />}
       {!loading && (
         <>
-          <form onSubmit={handleSubmit}>
-            <input
-              name="id"
-              type="text"
-              placeholder="id"
-              defaultValue={applications.id}
-              onChange={(e) => setId(e.target.value)}
-            />
-            <input
-              name="name"
-              type="text"
-              placeholder="name"
-              defaultValue={applications.name}
-              onChange={(e) => setName(e.target.value)}
-            />
-            <input
-              name="secret"
-              type="text"
-              placeholder="secret"
-              defaultValue={applications.secret}
-              onChange={(e) => setSecret(e.target.value)}
-            />
-            <input
-              name="lang"
-              type="text"
-              placeholder="lang"
-              defaultValue={applications.lang}
-              onChange={(e) => setLang(e.target.value)}
-            />
-            <input
-              name="version"
-              type="number"
-              placeholder="version"
-              defaultValue={applications.version}
-              onChange={(e) => setVersion(e.target.value)}
-            />
-            <button type="submit">Edit</button>
-            <Link to="/applications">Cancel</Link>
-          </form>
+          <Header title={`Edit Application with name: ${applications.name}`} />
+          <div className="crud-form">
+            <form onSubmit={handleSubmit} className="crud-form__card">
+              <label for="name">Id:</label>
+              <input
+                name="id"
+                type="text"
+                defaultValue={applications.id}
+                onChange={(e) => setId(e.target.value)}
+              />
+              <label for="name">Name:</label>
+              <input
+                name="name"
+                type="text"
+                defaultValue={applications.name}
+                onChange={(e) => setName(e.target.value)}
+              />
+              <label for="secret">Secret:</label>
+              <input
+                name="secret"
+                type="text"
+                defaultValue={applications.secret}
+                onChange={(e) => setSecret(e.target.value)}
+              />
+              <label for="lang">Lang:</label>
+              <input
+                name="lang"
+                type="text"
+                defaultValue={applications.lang}
+                onChange={(e) => setLang(e.target.value)}
+              />
+              <label for="version">Version:</label>
+              <input
+                name="version"
+                type="number"
+                defaultValue={applications.version}
+                onChange={(e) => setVersion(e.target.value)}
+              />
+              <div className="crud-form__card__bottom">
+                <Link className="btn-item btn-item--red" to="/applications">
+                  Cancel
+                </Link>
+                <button className="btn-item btn-item--green" type="submit">
+                  Edit
+                </button>
+              </div>
+            </form>
+          </div>
         </>
       )}
     </>

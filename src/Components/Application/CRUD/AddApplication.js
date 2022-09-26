@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 import Header from "../../Layout/Header";
+import "./CRUDApplication.scss";
 
 function AddApplcation() {
   const [id, setId] = useState();
@@ -30,43 +31,51 @@ function AddApplcation() {
   };
 
   return (
-    <div>
+    <>
       <Header title="Add new Application" />
-      <form onSubmit={handleSubmit}>
-        <input
-          name="id"
-          type="text"
-          placeholder="id"
-          onChange={(e) => setId(e.target.value)}
-        />
-        <input
-          name="name"
-          type="text"
-          placeholder="name"
-          onChange={(e) => setName(e.target.value)}
-        />
-        <input
-          name="secret"
-          type="text"
-          placeholder="secret"
-          onChange={(e) => setSecret(e.target.value)}
-        />
-        <input
-          name="lang"
-          type="text"
-          placeholder="lang"
-          onChange={(e) => setLang(e.target.value)}
-        />
-        <input
-          name="version"
-          type="number"
-          placeholder="version"
-          onChange={(e) => setVersion(e.target.value)}
-        />
-        <button type="submit">Add</button>
-        <Link to="/applications">Cancel</Link>
-      </form>
-    </div>
+      <div className="crud-form">
+        <form onSubmit={handleSubmit} className="crud-form__card">
+          <label for="name">Id:</label>
+          <input
+            name="id"
+            type="text"
+            onChange={(e) => setId(e.target.value)}
+          />
+          <label for="name">Name:</label>
+          <input
+            name="name"
+            type="text"
+            onChange={(e) => setName(e.target.value)}
+          />
+          <label for="secret">Secret:</label>
+          <input
+            name="secret"
+            type="text"
+            onChange={(e) => setSecret(e.target.value)}
+          />
+          <label for="lang">Lang:</label>
+          <input
+            name="lang"
+            type="text"
+            onChange={(e) => setLang(e.target.value)}
+          />
+          <label for="version">Version:</label>
+          <input
+            name="version"
+            type="number"
+            onChange={(e) => setVersion(e.target.value)}
+          />
+          <div className="crud-form__card__bottom">
+            <Link className="btn-item btn-item--red" to="/applications">
+              Cancel
+            </Link>
+            <button className="btn-item btn-item--green" type="submit">
+              Add
+            </button>
+          </div>
+        </form>
+      </div>
+    </>
   );
 }
 
