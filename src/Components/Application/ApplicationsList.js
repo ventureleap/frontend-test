@@ -3,12 +3,13 @@ import "./ApplicationsList.scss";
 import ApplicationListItem from "./ApplicationListItem";
 import ReactLoading from "react-loading";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Header from "../Layout/Header";
 
 function ApplicationList() {
   const [applications, setApplications] = useState();
   const [loading, setLoading] = useState(true);
+  const location = useLocation();
 
   useEffect(() => {
     axios
@@ -26,10 +27,14 @@ function ApplicationList() {
         console.log(error);
       });
   }, [loading]);
+  // console.log(location.pathname);
 
   return (
     <div className="application-list">
-      <Header title="This is a code challenge for Venture Leap Gmbh" />
+      <Header
+        title="This is a code challenge for Venture Leap Gmbh"
+        location={location.pathname}
+      />
       <div className="application-list__content">
         <div className="application-list__content__add">
           <Link to="/applications/create">Add Application</Link>

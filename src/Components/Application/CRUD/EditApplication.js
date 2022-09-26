@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState, useEffect } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import ReactLoading from "react-loading";
 import Header from "../../Layout/Header";
 import "./CRUDApplication.scss";
@@ -15,6 +15,7 @@ function EditApplcation() {
   const [loading, setLoading] = useState(true);
   const history = useHistory();
   const { idApp } = useParams();
+  const location = useLocation();
 
   useEffect(() => {
     axios
@@ -51,45 +52,46 @@ function EditApplcation() {
       });
   };
 
-  console.log(applications);
-
   return (
     <>
       {loading && <ReactLoading type="balls" color="#dddddd" />}
       {!loading && (
         <>
-          <Header title={`Edit Application with name: ${applications.name}`} />
+          <Header
+            location={location.pathname}
+            title={`Edit Application with name: ${applications.name}`}
+          />
           <div className="crud-form">
             <form onSubmit={handleSubmit} className="crud-form__card">
-              <label for="name">Id:</label>
+              <label htmlFor="id">Id:</label>
               <input
                 name="id"
                 type="text"
                 defaultValue={applications.id}
                 onChange={(e) => setId(e.target.value)}
               />
-              <label for="name">Name:</label>
+              <label htmlFor="name">Name:</label>
               <input
                 name="name"
                 type="text"
                 defaultValue={applications.name}
                 onChange={(e) => setName(e.target.value)}
               />
-              <label for="secret">Secret:</label>
+              <label htmlFor="secret">Secret:</label>
               <input
                 name="secret"
                 type="text"
                 defaultValue={applications.secret}
                 onChange={(e) => setSecret(e.target.value)}
               />
-              <label for="lang">Lang:</label>
+              <label htmlFor="lang">Lang:</label>
               <input
                 name="lang"
                 type="text"
                 defaultValue={applications.lang}
                 onChange={(e) => setLang(e.target.value)}
               />
-              <label for="version">Version:</label>
+              <label htmlFor="version">Version:</label>
               <input
                 name="version"
                 type="number"

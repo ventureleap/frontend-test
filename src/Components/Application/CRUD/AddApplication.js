@@ -1,6 +1,6 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link, useHistory, useLocation } from "react-router-dom";
 import Header from "../../Layout/Header";
 import "./CRUDApplication.scss";
 
@@ -11,6 +11,7 @@ function AddApplcation() {
   const [lang, setLang] = useState();
   const [version, setVersion] = useState();
   const history = useHistory();
+  const location = useLocation();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -32,34 +33,34 @@ function AddApplcation() {
 
   return (
     <>
-      <Header title="Add new Application" />
+      <Header title="Add new Application" location={location.pathname} />
       <div className="crud-form">
         <form onSubmit={handleSubmit} className="crud-form__card">
-          <label for="name">Id:</label>
+          <label htmlFor="id">Id:</label>
           <input
             name="id"
             type="text"
             onChange={(e) => setId(e.target.value)}
           />
-          <label for="name">Name:</label>
+          <label htmlFor="name">Name:</label>
           <input
             name="name"
             type="text"
             onChange={(e) => setName(e.target.value)}
           />
-          <label for="secret">Secret:</label>
+          <label htmlFor="secret">Secret:</label>
           <input
             name="secret"
             type="text"
             onChange={(e) => setSecret(e.target.value)}
           />
-          <label for="lang">Lang:</label>
+          <label htmlFor="lang">Lang:</label>
           <input
             name="lang"
             type="text"
             onChange={(e) => setLang(e.target.value)}
           />
-          <label for="version">Version:</label>
+          <label htmlFor="version">Version:</label>
           <input
             name="version"
             type="number"
