@@ -1,6 +1,4 @@
-//Create proxy because of 1-cors 2-send cookie
-
-import { createProxyMiddleware } from "http-proxy-middleware";
+const { createProxyMiddleware } = require("http-proxy-middleware");
 
 module.exports = function (app) {
   app.use(

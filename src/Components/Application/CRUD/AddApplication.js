@@ -21,22 +21,18 @@ function AddApplcation() {
         lang: lang,
         version: version,
       })
-      .then(function (res) {
-        // console.log(res);
+      .then(function () {
         history.push("/applications");
       })
       .catch(function (error) {
         console.log(error);
       });
   };
-  // const id=1
+
   return (
     <div>
       <Header title="Add new Application" />
       <form onSubmit={handleSubmit}>
-        {/* <div>
-        id: {id+1}
-      </div> */}
         <input
           name="id"
           type="text"
@@ -67,7 +63,7 @@ function AddApplcation() {
           placeholder="version"
           onChange={(e) => setVersion(e.target.value)}
         />
-        <button type="submit">add</button>
+        <button type="submit">Add</button>
         <Link to="/applications">Cancel</Link>
       </form>
     </div>

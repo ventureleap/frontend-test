@@ -1,3 +1,38 @@
 .application-list-item{
-    // height: 4000px;
+    &:hover{
+        background-color: #eeeded;
+    }
+    &__btn{
+        &__item{
+            display: inline-flex;
+            align-items: center;
+            
+            height: 35px;
+            padding: 5px 10px;
+
+            border-radius: 5px;
+            text-decoration: none;
+            background-color: #fff;
+            &--red{
+                border: 2px solid #cf3945;
+                color: #cf3945;
+                &:hover{
+                    transition:0.3s ease-out;
+                    background-color: #cf3945;
+                    color: white;
+                }
+            }
+            &--blue{
+                margin-left: 10px;
+
+                border: 2px solid #007bff;
+                color: #007bff;
+                &:hover{
+                    transition:0.3s ease-out;
+                    background-color: #007bff;
+                    color: white;
+                }
+            }
+        }
+    }
 }
