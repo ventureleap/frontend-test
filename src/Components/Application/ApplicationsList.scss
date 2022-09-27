@@ -1,3 +1,6 @@
+@import "../Utilities/variables.scss";
+@import "../Utilities/mixins.scss";
+
 .application-list{
     height: fit-content;
     width: 100%;
@@ -8,29 +11,26 @@
             border-collapse: collapse;
             width: 100%;
             th,td{
-                border: 1px solid #dddddd;
+                border: 1px solid $meduim-gray;
                 text-align: center;
                 padding: 8px;
             }
         }
         &__add{
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            @include flex-center-center;
 
             height: 70px;
             margin-bottom: 20px;
-            background-color: #f0f0f0;
+            background-color: $light-gray;
             
             a{
                 padding: 8px 10px;
 
-                border-radius: 5px;
+                @include border-radius;
                 color: black;
-                text-decoration: none;
-                background-color: #dddddd;
+                background-color: $meduim-gray;
                 &:hover{
-                    background-color: #d6d2d2;
+                    background-color: $dark-gray;
                 }
             }
         }

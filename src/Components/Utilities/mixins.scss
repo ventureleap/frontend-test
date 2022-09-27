@@ -1,0 +1,31 @@
+@mixin font-size($size, $base: 16) {
+  font-size: $size;
+  font-size: ($size / $base) * 1rem;
+}
+
+@mixin success-notification{
+  color:#0f5132;
+  background-color: #d1e7dd;
+  border: 1px solid #badbcc;
+}
+
+@mixin danger-notification{
+  color: #842029;
+  background-color: #f8d7da;
+  border: 1px solid #f5c2c7;
+}
+
+@mixin message {
+  padding:15px 30px;
+  border-radius: 5px;
+  font-weight: bold;
+}
+
+@mixin  flex-center-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+@mixin border-radius($size:1) {
+  border-radius: $size * 5px;
+}

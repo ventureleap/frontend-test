@@ -1,15 +1,17 @@
+@import "../Utilities/variables.scss";
+@import "../Utilities/mixins.scss";
+
 .header{
     display: flex;
     flex-direction: column;
 
     position: sticky;
     top: 0;
-    width: 100%;
     padding:10px 20px;
     margin-bottom: 15px;
 
     color: white;
-    background: linear-gradient(30deg,#a445b2 , #fa4299);
+    background: $linear-gradient;
     box-shadow: 0 7px 10px rgba(0,0,0,15%);
     &__title{}
     &__breadcrumb{
@@ -29,7 +31,7 @@
             &:last-child{
                 padding: 0 10px;
 
-                border-radius: 10px;
+                @include border-radius(2) ;
                 background-color: #fff;
                 color: #a445b2;
                 &:after{

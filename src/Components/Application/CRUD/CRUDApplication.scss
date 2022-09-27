@@ -1,7 +1,8 @@
+@import "../../Utilities/variables.scss";
+@import "../../Utilities/mixins.scss";
+
 .crud-form{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+   @include flex-center-center;
     &__card{
         display: flex;
         flex-direction: column;
@@ -9,7 +10,7 @@
         width: 40%;
         padding: 30px;
 
-        border-radius:10px;
+        @include border-radius(2);
         box-shadow: 0 7px 15px rgb(0 0 0 / 15%);
         input{
             margin-bottom: 10px;
@@ -19,15 +20,13 @@
             display: flex;
             justify-content: space-between;
             .btn-item{
-                display: flex;
-                align-items: center;
-                justify-content: center;
+                @include flex-center-center;
 
                 height: 35px;
                 width: 100px;
                 padding: 5px 10px;
 
-                border-radius: 5px;
+                @include border-radius;
                 text-decoration: none;
                 
                 &--red{
