@@ -14,13 +14,13 @@ function AddApplcation() {
   const [message, setMessage] = useState({});
   const history = useHistory();
   const location = useLocation();
-  const setMessageEmpty = () => {
+  const setMessageEmpty = () => {// show notification a period of time 
     setTimeout(function () {
       setMessage("");
     }, 5000);
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e) => { // post current applcation
     e.preventDefault();
     axios
       .post("http://localhost:3000/api/applications", {
@@ -31,11 +31,11 @@ function AddApplcation() {
         version: version,
       })
       .then(function () {
-        history.push("/applications");
+        history.push("/applications"); // go to home page after posting
       })
       .catch(function (error) {
         console.log(error);
-        setMessage({
+        setMessage({// don't post current application for repeating of id and show the reason
           message: error.response.data.status,
           status: error.response.status,
         });

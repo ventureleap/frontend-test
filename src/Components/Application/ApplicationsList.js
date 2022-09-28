@@ -11,7 +11,7 @@ function ApplicationList() {
   const [loading, setLoading] = useState(true);
   const location = useLocation();
 
-  useEffect(() => {
+  useEffect(() => { // get all applications create in current user
     axios
       .get("http://localhost:3000/api/applications", {
         headers: {
@@ -21,7 +21,7 @@ function ApplicationList() {
       })
       .then((res) => {
         setApplications(res.data);
-        setLoading(false);
+        setLoading(false);//after get change loading
       })
       .catch((error) => {
         console.log(error);

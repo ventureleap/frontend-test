@@ -19,7 +19,7 @@ function EditApplcation() {
   const location = useLocation();
 
   useEffect(() => {
-    const getData = () => {
+    const getData = () => {// get all details of selected application
       axios
         .get(`http://localhost:3000/api/applications/${idApp}`, {
           headers: {
@@ -28,8 +28,8 @@ function EditApplcation() {
           },
         })
         .then((res) => {
-          setApplications(res.data);
-          setLoading(false);
+          setApplications(res.data);//after get the details,push it on to a state
+          setLoading(false);//after get change loading
         })
         .catch((error) => {
           console.log(error);
@@ -41,7 +41,7 @@ function EditApplcation() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:3000/api/applications/${idApp}`, {
+      .put(`http://localhost:3000/api/applications/${idApp}`, { //post detail of current application
         id: id,
         name: name,
         secret: secret,
@@ -49,7 +49,7 @@ function EditApplcation() {
         version: version,
       })
       .then(function () {
-        history.push("/applications");
+        history.push("/applications"); //after posting the details, go home page
       })
       .catch(function (error) {
         console.log(error);

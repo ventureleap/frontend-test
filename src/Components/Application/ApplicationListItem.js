@@ -5,7 +5,7 @@ import { Link, useHistory } from "react-router-dom";
 
 function ApplicationListItem({ applicationsList }) {
   const history = useHistory();
-  const handleRemove = (item) => {
+  const handleRemove = (item) => {//delete selected application
     axios
       .delete(`http://localhost:3000/api/applications/${item}`)
       .then(() => {

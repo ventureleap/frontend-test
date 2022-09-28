@@ -12,12 +12,12 @@ function IncomeForm() {
   const history = useHistory();
 
 
-  const setMessageEmpty = () => {
+  const setMessageEmpty = () => { // show notification a period of time 
     setTimeout(function () {
       setMessage("");
     }, 5000);
   };
-  const handleSignUpSubmit = async (value) => {
+  const handleSignUpSubmit = async (value) => { // post a new user
     axios
       .post(
         "http://localhost:3000/api/users",
@@ -32,21 +32,21 @@ function IncomeForm() {
         }
       )
       .then(function (response) {
-        setMessage({
+        setMessage({ //show the notifaction to user
           message: response.data.status,
           status: response.status,
         });
         setMessageEmpty();
       })
       .catch(function (error) {
-        setMessage({
+        setMessage({ //show the notifaction to user
           message: error.response.data.error.message,
           status: error.response.status,
         });
         setMessageEmpty();
       });
   };
-  const handleLoginSubmit = async (value) => {
+  const handleLoginSubmit = async (value) => {// login with username and password
     axios
       .post("http://localhost:3000/api/users/login", {
         username: value.username,
@@ -67,7 +67,7 @@ function IncomeForm() {
   return (
     <div className="form">
       <div className="form__wrapper">
-        <div className="form__wrapper__selector">
+        <div className="form__wrapper__selector"> 
           <button
             className={changeBtn === true ? "active" : null}
             onClick={() => setChangeBtn(!changeBtn)}
