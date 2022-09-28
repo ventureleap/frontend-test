@@ -15,7 +15,7 @@ function Messages({ responseMessage, responseStatus }) {
         message = "User already exists!";
         break;
       case 500:
-        message = "User doesn't exists! Please Sign up.";
+        message = "User or Passwrod is wrong!";
         break;
       default:
         message = responseMessage;

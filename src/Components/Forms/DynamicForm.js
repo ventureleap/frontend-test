@@ -12,15 +12,6 @@ function IncomeForm() {
   const [message, setMessage] = useState({});
   const history = useHistory();
 
-  // const alert = (msg) => {
-  //   if (msg === "") {
-  //     return null;
-  //   } else if (msg === "ok") {
-  //     return "User successfully created:)";
-  //   } else {
-  //     return "User already exists!";
-  //   }
-  // };
 
   // const [cookies, setCookie] = useCookies(["sessionId"]);
   const setMessageEmpty = () => {
@@ -112,17 +103,6 @@ function IncomeForm() {
           responseStatus={message.status}
         />
       )}
-
-      {/* {alert(message) === null ? null : alert(message) ===
-        "User successfully created:)" ? (
-        <div className="form__message form__message--success">
-          {alert(message)}
-        </div>
-      ) : (
-        <div className="form__message form__message--danger">
-          {alert(message)}
-        </div>
-      )} */}
     </div>
   );
 }
