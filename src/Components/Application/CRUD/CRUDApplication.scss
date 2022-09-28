@@ -24,29 +24,29 @@
             .btn-item{
                 @include flex-center-center;
 
-                height: 35px;
                 width: 100px;
                 padding: 5px 10px;
 
                 @include border-radius;
+                @include font-size(16);
                 text-decoration: none;
                 
                 &--red{
-                    background-color: #cf3945;
-                    border: 2px solid #cf3945;
+                    background-color: $medium-danger;
+                    border: 2px solid $medium-danger;
                     color: white;
                     &:hover{  
                         transition:0.3s ease-out;                      
-                        background-color: #be1f2d;
+                        background-color: $hight-danger;
                     }
                 }
                 &--green{
-                    background-color: #28a745;
-                    border: 2px solid #28a745;
+                    background-color: $medium-successs;
+                    border: 2px solid $medium-successs;
                     color: white;
                     &:hover{
                         transition:0.3s ease-out;
-                        background-color:#149131;
+                        background-color:$high-success;
                     }
                 }
             }

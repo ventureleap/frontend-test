@@ -23,7 +23,7 @@
     &__selector{
         margin-bottom: 20px;
         button{
-            @include font-size(18)
+            @include font-size(18);
         }
         .active{
             background: $linear-gradient;

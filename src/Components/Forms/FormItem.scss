@@ -12,9 +12,6 @@
         color: white;
         @include font-size(18);
         background: $linear-gradient;
-        &:hover{
-            cursor: pointer;
-        }
     }
     
 }

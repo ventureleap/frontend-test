@@ -17,7 +17,13 @@ button{
   border: none;
   border-radius: 5px;
   padding: 10px 15px;
+  &:hover{
+    cursor: pointer;
+  }
 }
 a{
   text-decoration: none !important;
+  &:hover{
+    cursor: pointer;
+  }
 }
