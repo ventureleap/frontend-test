@@ -3,7 +3,6 @@ import "./DynamicForm.scss";
 import axios from "axios";
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
-// import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
 import Message from "../Public/Message";
 
@@ -13,7 +12,6 @@ function IncomeForm() {
   const history = useHistory();
 
 
-  // const [cookies, setCookie] = useCookies(["sessionId"]);
   const setMessageEmpty = () => {
     setTimeout(function () {
       setMessage("");
@@ -54,14 +52,7 @@ function IncomeForm() {
         username: value.username,
         password: value.password,
       })
-      .then(function (response) {
-        // console.log(response.data);
-        // const sessionId = response.data.session;
-        // setCookie("sessionId", sessionId, {
-        //   secure: true,
-        //   sameSite: "None",
-        // });
-        // console.log("cookie", cookies.sessionId);
+      .then(function () {
         history.push("/applications");
       })
       .catch(function (error) {

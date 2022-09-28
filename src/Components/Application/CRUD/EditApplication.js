@@ -4,7 +4,6 @@ import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import ReactLoading from "react-loading";
 import Header from "../../Layout/Header";
 import "./CRUDApplication.scss";
-import Message from "../../Public/Message";
 
 function EditApplcation() {
   const [id, setId] = useState();
@@ -20,21 +19,24 @@ function EditApplcation() {
   const location = useLocation();
 
   useEffect(() => {
-    axios
-      .get(`http://localhost:3000/api/applications/${idApp}`, {
-        headers: {
-          "Content-Type": "application/json",
-          withCredentials: true,
-        },
-      })
-      .then((res) => {
-        setApplications(res.data);
-        setLoading(false);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }, [loading]);
+    const getData = () => {
+      axios
+        .get(`http://localhost:3000/api/applications/${idApp}`, {
+          headers: {
+            "Content-Type": "application/json",
+            withCredentials: true,
+          },
+        })
+        .then((res) => {
+          setApplications(res.data);
+          setLoading(false);
+        })
+        .catch((error) => {
+          console.log(error);
+        });
+    };
+    getData();
+  }, [idApp]);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
