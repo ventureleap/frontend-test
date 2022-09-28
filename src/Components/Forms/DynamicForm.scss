@@ -1,15 +1,15 @@
+@import "../Utilities/variables.scss";
+@import "../Utilities/mixins.scss";
+
 .form{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center-center;
     flex-direction: column;
 
     height: 100vh;
-    background: linear-gradient(30deg,#a445b2 , #fa4299);
+    position: relative;
+    background: $linear-gradient;
    &__wrapper{
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flex-center-center;
     flex-direction: column;
 
     width: 360px;
@@ -22,28 +22,13 @@
 
     &__selector{
         margin-bottom: 20px;
+        button{
+            @include font-size(18);
+        }
         .active{
-            background: linear-gradient(30deg,#a445b2 , #fa4299);
+            background: $linear-gradient;
             color: white;
         }
-    }
-   }
-   &__message{
-    width: 360px;
-    padding:15px 30px;
-
-    border-radius: 5px;
-    font-weight: bold;
-
-    &--success{
-        color:#0f5132;
-        background-color: #d1e7dd;
-        border: 1px solid #badbcc;
-    }
-    &--danger{
-        color: #842029;
-        background-color: #f8d7da;
-        border: 1px solid #f5c2c7;
     }
    }
 }

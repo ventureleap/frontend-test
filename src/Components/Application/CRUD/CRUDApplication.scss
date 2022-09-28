@@ -1,0 +1,56 @@
+@import "../../Utilities/variables.scss";
+@import "../../Utilities/mixins.scss";
+
+.crud-form{
+   @include flex-center-center;
+    &__card{
+        display: flex;
+        flex-direction: column;
+
+        width: 40%;
+        padding: 30px;
+
+        @include border-radius(2);
+        box-shadow: 0 7px 15px rgb(0 0 0 / 15%);
+        label{
+            margin-bottom: 5px;
+        }
+        input{
+            @include input;
+        }
+        &__bottom{
+            display: flex;
+            justify-content: space-between;
+            .btn-item{
+                @include flex-center-center;
+
+                width: 100px;
+                padding: 5px 10px;
+
+                @include border-radius;
+                @include font-size(16);
+                text-decoration: none;
+                
+                &--red{
+                    background-color: $medium-danger;
+                    border: 2px solid $medium-danger;
+                    color: white;
+                    &:hover{  
+                        transition:0.3s ease-out;                      
+                        background-color: $hight-danger;
+                    }
+                }
+                &--green{
+                    background-color: $medium-successs;
+                    border: 2px solid $medium-successs;
+                    color: white;
+                    &:hover{
+                        transition:0.3s ease-out;
+                        background-color:$high-success;
+                    }
+                }
+            }
+        }
+
+    }
+}

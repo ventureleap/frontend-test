@@ -1,0 +1,18 @@
+@import "../Utilities/variables.scss";
+@import "../Utilities/mixins.scss";
+
+.message{
+    width: 200px;
+    
+    text-align: center;
+    @include message;
+    position:absolute;
+    opacity: 0.8;
+
+    &--success{
+        @include success-notification;
+    }
+    &--danger{
+        @include danger-notification;
+    }
+}

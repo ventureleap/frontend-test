@@ -1,0 +1,47 @@
+@import "../Utilities/variables.scss";
+@import "../Utilities/mixins.scss";
+
+.header{
+    display: flex;
+    flex-direction: column;
+
+    position: sticky;
+    top: 0;
+    padding:10px 20px;
+    margin-bottom: 15px;
+
+    color: white;
+    background: $linear-gradient;
+    box-shadow: 0 7px 10px rgba(0,0,0,15%);
+    &__title{
+        margin-bottom: 15px;
+        @include font-size(20);
+    }
+    &__breadcrumb{
+        display: flex;
+        height: 24px;
+        &__item{
+            position: relative;
+            padding-right: 20px;
+            color: white;
+            &::before{
+                display: none!important;
+            }
+            &:after{
+                position: absolute;
+                right: 5px;
+                content: ">";
+            }
+            &:last-child{
+                padding: 0 10px;
+
+                @include border-radius(2) ;
+                background-color: #fff;
+                color: #a445b2;
+                &:after{
+                    content: "";
+                }
+            }
+        }
+    }
+}
