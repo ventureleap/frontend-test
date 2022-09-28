@@ -3,25 +3,31 @@ import "./DynamicForm.scss";
 import axios from "axios";
 import SignUpForm from "./SignUpForm";
 import LoginForm from "./LoginForm";
-import { useCookies } from "react-cookie";
+// import { useCookies } from "react-cookie";
 import { useHistory } from "react-router-dom";
+import Message from "../Public/Message";
 
 function IncomeForm() {
   const [changeBtn, setChangeBtn] = useState(true);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState({});
   const history = useHistory();
 
-  const alert = (msg) => {
-    if (msg === "") {
-      return null;
-    } else if (msg === "ok") {
-      return "User successfully created:)";
-    } else {
-      return "User already exists!";
-    }
-  };
+  // const alert = (msg) => {
+  //   if (msg === "") {
+  //     return null;
+  //   } else if (msg === "ok") {
+  //     return "User successfully created:)";
+  //   } else {
+  //     return "User already exists!";
+  //   }
+  // };
 
-  const [cookies, setCookie] = useCookies(["sessionId"]);
+  // const [cookies, setCookie] = useCookies(["sessionId"]);
+  const setMessageEmpty = () => {
+    setTimeout(function () {
+      setMessage("");
+    }, 5000);
+  };
   const handleSignUpSubmit = async (value) => {
     axios
       .post(
@@ -37,16 +43,18 @@ function IncomeForm() {
         }
       )
       .then(function (response) {
-        setMessage(response.data.status);
-        setTimeout(function () {
-          setMessage("");
-        }, 5000);
+        setMessage({
+          message: response.data.status,
+          status: response.status,
+        });
+        setMessageEmpty();
       })
       .catch(function (error) {
-        setMessage(error.response.data.error.message);
-        setTimeout(function () {
-          setMessage("");
-        }, 5000);
+        setMessage({
+          message: error.response.data.error.message,
+          status: error.response.status,
+        });
+        setMessageEmpty();
       });
   };
   const handleLoginSubmit = async (value) => {
@@ -56,17 +64,21 @@ function IncomeForm() {
         password: value.password,
       })
       .then(function (response) {
-        console.log(response.data);
-        const sessionId = response.data.session;
-        setCookie("sessionId", sessionId, {
-          secure: true,
-          sameSite: "None",
-        });
-        console.log("cookie", cookies.sessionId);
+        // console.log(response.data);
+        // const sessionId = response.data.session;
+        // setCookie("sessionId", sessionId, {
+        //   secure: true,
+        //   sameSite: "None",
+        // });
+        // console.log("cookie", cookies.sessionId);
         history.push("/applications");
       })
       .catch(function (error) {
-        console.log(error);
+        setMessage({
+          message: error.response.data.errors[0].message,
+          status: error.response.status,
+        });
+        setMessageEmpty();
       });
   };
 
@@ -94,7 +106,14 @@ function IncomeForm() {
           <LoginForm onSubmit={handleLoginSubmit} />
         )}
       </div>
-      {alert(message) === null ? null : alert(message) ===
+      {message === null ? null : (
+        <Message
+          responseMessage={message.message}
+          responseStatus={message.status}
+        />
+      )}
+
+      {/* {alert(message) === null ? null : alert(message) ===
         "User successfully created:)" ? (
         <div className="form__message form__message--success">
           {alert(message)}
@@ -103,7 +122,7 @@ function IncomeForm() {
         <div className="form__message form__message--danger">
           {alert(message)}
         </div>
-      )}
+      )} */}
     </div>
   );
 }

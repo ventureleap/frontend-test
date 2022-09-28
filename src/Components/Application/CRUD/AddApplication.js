@@ -2,6 +2,7 @@ import axios from "axios";
 import React, { useState } from "react";
 import { Link, useHistory, useLocation } from "react-router-dom";
 import Header from "../../Layout/Header";
+import Message from "../../Public/Message";
 import "./CRUDApplication.scss";
 
 function AddApplcation() {
@@ -10,8 +11,14 @@ function AddApplcation() {
   const [secret, setSecret] = useState();
   const [lang, setLang] = useState();
   const [version, setVersion] = useState();
+  const [message, setMessage] = useState({});
   const history = useHistory();
   const location = useLocation();
+  const setMessageEmpty = () => {
+    setTimeout(function () {
+      setMessage("");
+    }, 5000);
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -28,6 +35,11 @@ function AddApplcation() {
       })
       .catch(function (error) {
         console.log(error);
+        setMessage({
+          message: error.response.data.status,
+          status: error.response.status,
+        });
+        setMessageEmpty();
       });
   };
 
@@ -75,6 +87,12 @@ function AddApplcation() {
             </button>
           </div>
         </form>
+        {message === null ? null : (
+          <Message
+            responseMessage={message.message}
+            responseStatus={message.status}
+          />
+        )}
       </div>
     </>
   );

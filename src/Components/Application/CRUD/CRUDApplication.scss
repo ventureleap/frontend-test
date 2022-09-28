@@ -12,9 +12,11 @@
 
         @include border-radius(2);
         box-shadow: 0 7px 15px rgb(0 0 0 / 15%);
+        label{
+            margin-bottom: 5px;
+        }
         input{
-            margin-bottom: 10px;
-            padding: 5px;
+            @include input;
         }
         &__bottom{
             display: flex;

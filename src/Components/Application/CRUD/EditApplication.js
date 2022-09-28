@@ -4,6 +4,7 @@ import { Link, useHistory, useParams, useLocation } from "react-router-dom";
 import ReactLoading from "react-loading";
 import Header from "../../Layout/Header";
 import "./CRUDApplication.scss";
+import Message from "../../Public/Message";
 
 function EditApplcation() {
   const [id, setId] = useState();
@@ -13,6 +14,7 @@ function EditApplcation() {
   const [version, setVersion] = useState();
   const [applications, setApplications] = useState();
   const [loading, setLoading] = useState(true);
+
   const history = useHistory();
   const { idApp } = useParams();
   const location = useLocation();
@@ -69,6 +71,7 @@ function EditApplcation() {
                 type="text"
                 defaultValue={applications.id}
                 onChange={(e) => setId(e.target.value)}
+                disabled
               />
               <label htmlFor="name">Name:</label>
               <input

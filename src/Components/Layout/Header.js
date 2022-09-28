@@ -6,7 +6,7 @@ function Header({ title, location }) {
 
   return (
     <div className="header">
-      <h4 className="header__title">{title}</h4>
+      <div className="header__title">{title}</div>
       <div className="header__breadcrumb">
         {locationArr.map((item, index) => (
           <div key={index} className="header__breadcrumb__item">

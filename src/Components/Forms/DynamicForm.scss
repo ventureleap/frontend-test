@@ -6,6 +6,7 @@
     flex-direction: column;
 
     height: 100vh;
+    position: relative;
     background: $linear-gradient;
    &__wrapper{
     @include flex-center-center;
@@ -28,17 +29,6 @@
             background: $linear-gradient;
             color: white;
         }
-    }
-   }
-   &__message{
-    width: 360px;
-    @include message;
-
-    &--success{
-        @include success-notification;
-    }
-    &--danger{
-        @include danger-notification;
     }
    }
 }

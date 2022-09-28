@@ -22,12 +22,16 @@ function ApplicationList() {
       .then((res) => {
         setApplications(res.data);
         setLoading(false);
+        console.log(
+          JSON.parse(JSON.stringify(res.data, ["id"])).filter(
+            (item) => item.id === "10"
+          ).length
+        );
       })
       .catch((error) => {
         console.log(error);
       });
   }, [loading]);
-  // console.log(location.pathname);
 
   return (
     <div className="application-list">
