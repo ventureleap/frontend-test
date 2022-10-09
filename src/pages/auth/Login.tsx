@@ -1,13 +1,15 @@
 import { useNavigate, useLocation, Link } from 'react-router-dom';
+import { useCookies } from 'react-cookie';
 import { Form } from 'react-final-form';
+import { toast } from 'react-toastify';
 import { useAppDispatch } from 'app/hooks';
 import { login } from 'reducers/auth/authSlice';
 import { UserLoginPayload } from 'models/auth.model';
 import FormField from 'components/form-field';
 import FetchButton from 'components/fetch-button';
-import { toast } from 'react-toastify';
 
 const LoginForm: React.FC = () => {
+  const [_, setCookie] = useCookies(['sessionId']);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
@@ -15,10 +17,11 @@ const LoginForm: React.FC = () => {
 
   const handleLoginFormSubmit = async (formData: UserLoginPayload) => {
     try {
-      await dispatch(login(formData)).unwrap();
+      const response = await dispatch(login(formData)).unwrap();
+      setCookie('sessionId', response.session);
       navigate(from, { replace: true });
     } catch (error: any) {
-      toast.error(error.message)
+      toast.error(error.message);
     }
   };
   return (
