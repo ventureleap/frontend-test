@@ -22,10 +22,17 @@
         height: 100%;
     }
 
+    &-title {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
     &-languages {
         display: flex;
         gap: 0.15rem 0.25rem;
         flex-wrap: wrap;
+
         &:has(.badge) {
             margin-bottom: 0.75rem;
         }

@@ -14,12 +14,14 @@ export interface ApplicationState {
   applications: Application[];
   activeApplication: null | Application;
   status: 'idle' | 'loading' | 'failed' | 'fetched' | 'deleting';
+  statusActiveApplication: 'idle' | 'loading' | 'loaded';
 }
 
 const initialState: ApplicationState = {
   applications: [],
   activeApplication: null,
-  status: 'idle'
+  status: 'idle',
+  statusActiveApplication: 'idle'
 };
 
 export const getAllApplications = createAsyncThunk(
@@ -104,30 +106,32 @@ export const applicationSlice = createSlice({
       })
       .addCase(getAllApplications.fulfilled, (state, action) => {
         state.status = 'fetched';
-        state.applications = action.payload;
+        state.applications = action.payload.sort(
+          (a: Application, b: Application) => Number(a.id) - Number(b.id)
+        );
       })
       .addCase(getAllApplications.rejected, (state) => {
         state.status = 'failed';
       })
       .addCase(getApplication.pending, (state) => {
-        state.status = 'loading';
+        state.statusActiveApplication = 'loading';
       })
       .addCase(getApplication.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.statusActiveApplication = 'loaded';
         state.activeApplication = action.payload;
       })
       .addCase(getApplication.rejected, (state) => {
-        state.status = 'failed';
+        state.statusActiveApplication = 'loaded';
       })
       .addCase(createApplication.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.statusActiveApplication = 'loaded';
         state.applications.push(action.payload);
       })
       .addCase(createApplication.rejected, (state) => {
-        state.status = 'failed';
+        state.statusActiveApplication = 'loaded';
       })
       .addCase(updateApplication.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.statusActiveApplication = 'loaded';
         const updatedApplicationIndex = state.applications.findIndex(
           (a) => a.id === action.payload.id
         );
@@ -136,13 +140,13 @@ export const applicationSlice = createSlice({
         }
       })
       .addCase(updateApplication.rejected, (state) => {
-        state.status = 'failed';
+        state.statusActiveApplication = 'loaded';
       })
       .addCase(deleteApplication.pending, (state) => {
-        state.status = 'deleting';
+        state.statusActiveApplication = 'loading';
       })
       .addCase(deleteApplication.fulfilled, (state, action) => {
-        state.status = 'idle';
+        state.statusActiveApplication = 'loaded';
         const updatedApplicationIndex = state.applications.findIndex(
           (a) => a.id.toString() === action.payload.toString()
         );

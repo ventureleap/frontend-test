@@ -46,7 +46,8 @@ const ApplicationForm: React.FC = () => {
     if (applicationId && !activeApplication) {
       dispatch(getApplication(applicationId));
     }
-  }, [applicationId, activeApplication, dispatch]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   if (status === 'loading' && !activeApplication) {
     return <Loading text="Loading application details" />;

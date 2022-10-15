@@ -15,7 +15,7 @@ interface IProps {
 const ApplicationDeleteModal: React.FC<IProps> = (props) => {
   const dispatch = useAppDispatch();
   const { show, handleClose } = props;
-  const { activeApplication, status } = useAppSelector(selectApplications);
+  const { activeApplication, statusActiveApplication } = useAppSelector(selectApplications);
 
   if (!activeApplication) return null;
 
@@ -39,7 +39,7 @@ const ApplicationDeleteModal: React.FC<IProps> = (props) => {
       <Modal.Footer className="flex-nowrap p-0">
         <FetchButton
           onClick={handleDeleteButtonClick}
-          loading={status === 'deleting'}
+          loading={statusActiveApplication === 'loading'}
           type="button"
           variant="link"
           className="btn btn-lg fs-6 text-decoration-none col-6 m-0 rounded-0 border-end"
