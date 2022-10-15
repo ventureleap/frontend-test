@@ -1,24 +1,26 @@
-import { useNavigate, useLocation, Link } from 'react-router-dom';
-import { useCookies } from 'react-cookie';
+import { useNavigate, useLocation, Link, Navigate } from 'react-router-dom';
 import { Form } from 'react-final-form';
 import { toast } from 'react-toastify';
-import { useAppDispatch } from 'app/hooks';
-import { login } from 'reducers/auth/authSlice';
+import { useAppDispatch, useAppSelector } from 'app/hooks';
+import { login, selectAuth } from 'reducers/auth/authSlice';
 import { UserLoginPayload } from 'models/auth.model';
 import FormField from 'components/form-field';
 import FetchButton from 'components/fetch-button';
+// import { setCookie } from 'helpers/cookies';
 
 const LoginForm: React.FC = () => {
-  const [_, setCookie] = useCookies(['sessionId']);
+  const { user } = useAppSelector(selectAuth);
   const navigate = useNavigate();
   const location = useLocation();
   const dispatch = useAppDispatch();
   const from = location.state?.from?.pathname || '/';
 
+  if (user) return <Navigate to="/" />;
+
   const handleLoginFormSubmit = async (formData: UserLoginPayload) => {
     try {
-      const response = await dispatch(login(formData)).unwrap();
-      setCookie('sessionId', response.session);
+      await dispatch(login(formData)).unwrap();
+      // setCookie('sessionId', response.session);
       navigate(from, { replace: true });
     } catch (error: any) {
       toast.error(error.message);
@@ -45,13 +47,14 @@ const LoginForm: React.FC = () => {
                     type="text"
                   />
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 position-relative">
                   <FormField
                     rules={['required']}
                     name="password"
                     label="Password"
                     placeholder="Password"
                     type="password"
+                    showPasswordToggler={true}
                   />
                 </div>
                 <FetchButton

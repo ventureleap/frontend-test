@@ -16,6 +16,7 @@ const ApplicationItem: React.FC<IProps> = (props) => {
   const dispatch = useAppDispatch();
   const { application } = props;
   const [showDeleteModal, setShowDeleteModal] = useState(false);
+  const variants = ['primary', 'secondary', 'success', 'warning', 'info'];
 
   const handleUpdateButtonClick = () => {
     dispatch(setActiveApplication(application));
@@ -27,11 +28,30 @@ const ApplicationItem: React.FC<IProps> = (props) => {
     setShowDeleteModal(true);
   };
 
+  const applicationLanguages = () => {
+    const appLangs = application.lang.split(',');
+    if (appLangs.length === 0) return <div></div>;
+    return appLangs.map((appLang, index) => (
+      <span
+        className={`badge text-bg-${variants[index % variants.length]}`}
+        key={appLang}
+      >
+        {appLang.trim()}
+      </span>
+    ));
+  };
+
   return (
     <>
       <div className="application-item">
         <div className="application-item-body">
-          <h4>{application.name}</h4>
+          <h4 className="application-item-title">{application.name}</h4>
+          <div className="application-item-languages">
+            {applicationLanguages()}
+          </div>
+          <div className="application-item-version small mt-auto text-muted">
+            {application.version}
+          </div>
         </div>
         <Dropdown>
           <Dropdown.Toggle

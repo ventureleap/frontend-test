@@ -25,7 +25,11 @@ function App() {
         <Breadcrumbs />
         {routesElement}
         <Outlet />
-        <ToastContainer theme='colored' position='top-right' hideProgressBar={true} />
+        <ToastContainer
+          theme="colored"
+          position="top-right"
+          hideProgressBar={true}
+        />
       </main>
       <Footer />
     </>

@@ -1,6 +1,9 @@
+import { useEffect } from 'react';
+import { Form } from 'react-final-form';
+import { useNavigate, useParams } from 'react-router-dom';
+import { toast } from 'react-toastify';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { Application } from 'models/application.model';
-import { Form } from 'react-final-form';
 import {
   createApplication,
   getApplication,
@@ -10,9 +13,6 @@ import {
 } from 'reducers/application/applicationSlice';
 import FetchButton from 'components/fetch-button';
 import FormField from 'components/form-field';
-import { useNavigate, useParams } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useEffect, useState } from 'react';
 import Loading from 'components/loading';
 
 const ApplicationForm: React.FC = () => {
@@ -20,7 +20,6 @@ const ApplicationForm: React.FC = () => {
   const { applicationId } = useParams();
   const { activeApplication, status } = useAppSelector(selectApplications);
   const dispatch = useAppDispatch();
-  const [showSecret, setShowSecret] = useState(false);
   const mode = applicationId ? 'update' : 'create';
 
   const handleFormSubmit = async (formData: Application) => {
@@ -59,7 +58,7 @@ const ApplicationForm: React.FC = () => {
         <div className="card-body p-5">
           <h1>{mode === 'create' ? 'Create' : 'Update'} Application</h1>
           <Form
-            initialValues={activeApplication}
+            initialValues={activeApplication || {}}
             onSubmit={handleFormSubmit}
             render={({ handleSubmit, submitting }) => (
               <form
@@ -90,19 +89,9 @@ const ApplicationForm: React.FC = () => {
                     name="secret"
                     label="Secret"
                     placeholder="Secret"
-                    type={showSecret ? 'text' : 'password'}
+                    type="password"
+                    showPasswordToggler={true}
                   />
-                  <button
-                    className="btn password-toggler"
-                    type="button"
-                    onClick={() => setShowSecret(!showSecret)}
-                  >
-                    <i
-                      className={`bi bi-eye-${
-                        showSecret ? 'slash-fill' : 'fill'
-                      }`}
-                    ></i>
-                  </button>
                 </div>
                 <div className="mb-3">
                   <FormField
@@ -112,6 +101,12 @@ const ApplicationForm: React.FC = () => {
                     placeholder="Lang"
                     type="text"
                   />
+                  <div
+                    className="my-1 d-flex align-items-center fs-7"
+                  >
+                    <i className="bi bi-info-circle me-2 text-info"></i>
+                    <span className="">You can add multiple items separated by comma</span>
+                  </div>
                 </div>
                 <div className="mb-3">
                   <FormField

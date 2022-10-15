@@ -120,14 +120,14 @@ export const applicationSlice = createSlice({
         state.status = 'failed';
       })
       .addCase(createApplication.fulfilled, (state, action) => {
-        state.status = 'fetched';
+        state.status = 'idle';
         state.applications.push(action.payload);
       })
       .addCase(createApplication.rejected, (state) => {
         state.status = 'failed';
       })
       .addCase(updateApplication.fulfilled, (state, action) => {
-        state.status = 'fetched';
+        state.status = 'idle';
         const updatedApplicationIndex = state.applications.findIndex(
           (a) => a.id === action.payload.id
         );
@@ -142,7 +142,7 @@ export const applicationSlice = createSlice({
         state.status = 'deleting';
       })
       .addCase(deleteApplication.fulfilled, (state, action) => {
-        state.status = 'fetched';
+        state.status = 'idle';
         const updatedApplicationIndex = state.applications.findIndex(
           (a) => a.id.toString() === action.payload.toString()
         );

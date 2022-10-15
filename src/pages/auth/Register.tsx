@@ -40,31 +40,14 @@ const RegisterForm: React.FC = () => {
                     type="text"
                   />
                 </div>
-                {/* <div className="mb-3">
-                  <FormField
-                    rules={['required']}
-                    name="lastname"
-                    label="Last Name"
-                    placeholder="Last Name"
-                    type="text"
-                  />
-                </div>
-                <div className="mb-3">
-                  <FormField
-                    rules={['required', 'email']}
-                    name="email"
-                    label="Email"
-                    placeholder="Email"
-                    type="email"
-                  />
-                </div> */}
-                <div className="mb-3">
+                <div className="mb-3 position-relative">
                   <FormField
                     rules={['required']}
                     name="password"
                     label="Password"
                     placeholder="Password"
                     type="password"
+                    showPasswordToggler={true}
                   />
                 </div>
                 <FetchButton

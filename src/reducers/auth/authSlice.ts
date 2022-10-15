@@ -9,6 +9,7 @@ import {
   UserRegisterPayload
 } from 'models/auth.model';
 import { loginReq, registerReq, fetchUserReq } from './authAPI';
+import { getCookie, removeCookie } from 'helpers/cookies';
 
 export interface UserState {
   user: null | User;
@@ -54,9 +55,21 @@ export const register = createAsyncThunk(
   }
 );
 
-export const fetchUser = createAsyncThunk('auth/fetchUserReq', async () => {
-  const response = await fetchUserReq();
-  return response.data;
+export const fetchUser = createAsyncThunk('auth/fetchUserReq', async (_, { rejectWithValue }) => {
+  try {
+    if (!getCookie('sessionId')) {
+      throw new Error('No stored cookie')
+    }
+    const response = await fetchUserReq();
+    return response.data;
+  } catch (err) {
+    const error = err as AxiosError<UserLoginError>;
+    if (!error.response) {
+      throw error;
+    }
+    return rejectWithValue(error.response.data);
+    
+  }
 });
 
 export const authSlice = createSlice({
@@ -65,7 +78,7 @@ export const authSlice = createSlice({
   reducers: {
     logout: (state) => {
       state.user = null;
-      localStorage.removeItem('token');
+      removeCookie('sessionId')
     }
   },
   extraReducers: (builder) => {
@@ -85,13 +98,8 @@ export const authSlice = createSlice({
       .addCase(register.pending, (state) => {
         state.status = 'registering';
       })
-      .addCase(register.fulfilled, (state, action) => {
+      .addCase(register.fulfilled, (state) => {
         state.status = 'idle';
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        if (localStorage) {
-          localStorage.setItem('token', action.payload.token);
-        }
       })
       .addCase(register.rejected, (state) => {
         state.status = 'failed';

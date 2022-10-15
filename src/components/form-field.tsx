@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Field } from 'react-final-form';
 
 const required = (value: string) => (value ? undefined : 'Required');
@@ -18,6 +19,7 @@ interface IProps {
   type?: 'text' | 'password' | 'email';
   label?: string;
   rules?: Array<keyof typeof validations> | null;
+  showPasswordToggler?: boolean;
 }
 
 const FormField: React.FC<IProps> = ({
@@ -25,40 +27,58 @@ const FormField: React.FC<IProps> = ({
   placeholder,
   label,
   type = 'text',
-  rules = 'required'
+  rules = 'required',
+  showPasswordToggler = false
 }) => {
+  const [showInputValue, setShowInputValue] = useState(showPasswordToggler);
   const validationsFuncs = Array.isArray(rules)
-    ? composeValidators(
-        ...rules.map((r) => validations[r])
-      )
+    ? composeValidators(...rules.map((r) => validations[r]))
     : undefined;
+  const inputTypeValue = showPasswordToggler
+    ? showInputValue
+      ? type
+      : 'text'
+    : type;
   return (
-    <Field name={name} validate={validationsFuncs}>
-      {({ input, meta }) => (
-        <>
-          <label className="form-label">{label}</label>
-          <input
-            {...input}
-            type={type}
-            placeholder={placeholder}
-            className="form-control"
-          />
-          {meta.error &&
-            meta.touched &&
-            meta.error
-              .filter((e: any) => !!e)
-              .map((error: any, index: number) => (
-                <div
-                  className="text-danger my-1 d-flex align-items-center fs-7"
-                  key={index}
-                >
-                  <i className="bi bi-x-circle me-2"></i>
-                  <span className="">{error}</span>
-                </div>
-              ))}
-        </>
+    <>
+      <Field name={name} validate={validationsFuncs}>
+        {({ input, meta }) => (
+          <>
+            <label className="form-label">{label}</label>
+            <input
+              {...input}
+              type={inputTypeValue}
+              placeholder={placeholder}
+              className="form-control"
+            />
+            {meta.error &&
+              meta.touched &&
+              meta.error
+                .filter((e: any) => !!e)
+                .map((error: any, index: number) => (
+                  <div
+                    className="text-danger my-1 d-flex align-items-center fs-7"
+                    key={index}
+                  >
+                    <i className="bi bi-x-circle me-2"></i>
+                    <span className="">{error}</span>
+                  </div>
+                ))}
+          </>
+        )}
+      </Field>
+      {showPasswordToggler && (
+        <button
+          className="btn password-toggler"
+          type="button"
+          onClick={() => setShowInputValue(!showInputValue)}
+        >
+          <i
+            className={`bi bi-eye-${showInputValue ? 'slash-fill' : 'fill'}`}
+          ></i>
+        </button>
       )}
-    </Field>
+    </>
   );
 };
 

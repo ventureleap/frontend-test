@@ -51,17 +51,17 @@ const Header: React.FC = () => {
           <Dropdown align="end">
             <Dropdown.Toggle
               variant="light"
-              className="d-block link-dark text-decoration-none dropdown-toggle"
+              className="text-decoration-none dropdown-toggle"
               id="dropdown-user"
             >
               <img
-                src="https://github.com/mdo.png"
-                alt="mdo"
+                src="https://avatars.githubusercontent.com/u/58259532?v=4"
+                alt="didactic-goggles"
                 width="32"
                 height="32"
                 className="rounded-circle me-2"
               />
-              <span>{user.username}</span>
+              <span className='d-none d-md-inline'>{user.username}</span>
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
@@ -69,7 +69,7 @@ const Header: React.FC = () => {
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleLogout}>
                 <i className="bi bi-box-arrow-left text-danger me-2"></i>
-                <span className="fw-semibold">Logout</span>
+                <span className="">Logout</span>
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
