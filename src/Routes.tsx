@@ -6,36 +6,40 @@ import {
   Link,
 } from 'react-router-dom';
 import App from './App';
+import Header from './components/Header';
 
 export default function Routes() {
   return (
-    <Router>
-      <div>
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <Link to="/about">About</Link>
-            </li>
-            <li>
-              <Link to="/users">Users</Link>
-            </li>
-            <li>
-              <Link to="/app">App</Link>
-            </li>
-          </ul>
-        </nav>
+    <>
+      <Header />
+      <Router>
+        <div>
+          <nav>
+            <ul>
+              <li>
+                <Link to="/">Home</Link>
+              </li>
+              <li>
+                <Link to="/about">About</Link>
+              </li>
+              <li>
+                <Link to="/users">Users</Link>
+              </li>
+              <li>
+                <Link to="/app">App</Link>
+              </li>
+            </ul>
+          </nav>
 
-        <ReactRouter>
-          <Route path="/about" element={<About />} />
-          <Route path="/users" element={<Users />} />
-          <Route path="/app" element={<App />} />
-          <Route path="/" element={<Home />} />
-        </ReactRouter>
-      </div>
-    </Router>
+          <ReactRouter>
+            <Route path="/about" element={<About />} />
+            <Route path="/users" element={<Users />} />
+            <Route path="/app" element={<App />} />
+            <Route path="/" element={<Home />} />
+          </ReactRouter>
+        </div>
+      </Router>
+    </>
   );
 }
 
