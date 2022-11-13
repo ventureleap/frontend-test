@@ -1,3 +1,17 @@
+import { useEffect } from 'react';
+import { useAppDispatch, useAppSelector } from '../app/hooks';
+import {
+  applications,
+  getApplicationsAsync,
+} from '../features/applications/applicationsSlice';
+
 export function Applications() {
-  return <h2>Applications</h2>;
+  const dispatch = useAppDispatch();
+  const applicationsData = useAppSelector(applications);
+
+  useEffect(() => {
+    dispatch(getApplicationsAsync());
+  }, [dispatch]);
+
+  return <>{JSON.stringify(applicationsData)}</>;
 }

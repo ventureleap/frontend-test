@@ -1,13 +1,12 @@
-import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
-import { RootState, AppThunk } from '../../app/store';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import { RootState } from '../../app/store';
 import { Login, Register } from '../../types';
-// import { User } from '../../types';
 import { loginUser, registerUser } from './userAPI';
 import Cookies from 'universal-cookie';
 
 const initialState = {
-  signupStatus: 'idle',
-  loginStatus: 'idle',
+  signupStatus: 'idle', // should be a enum
+  loginStatus: 'idle', // should be a enum
 };
 
 export const loginAsync = createAsyncThunk(
@@ -53,7 +52,10 @@ export const userSlice = createSlice({
       .addCase(loginAsync.fulfilled, (state, action) => {
         state.loginStatus = `success, ${JSON.stringify(action.payload)}`;
 
-        new Cookies().set('SessionId', action.payload.session);
+        new Cookies().set('sessionId', action.payload.session, {
+          secure: true,
+          sameSite: 'none',
+        });
       })
       .addCase(loginAsync.rejected, (state) => {
         state.loginStatus = 'failed';

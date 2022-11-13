@@ -1,10 +1,6 @@
 import { useAppDispatch, useAppSelector } from '../app/hooks';
 import CreateUserForm from '../features/user/CreateUserForm';
-import {
-  loginAsync,
-  selectSignupStatus,
-  signupAsync,
-} from '../features/user/userSlice';
+import { selectSignupStatus, signupAsync } from '../features/user/userSlice';
 import { Register } from '../types';
 
 export function Signup() {
