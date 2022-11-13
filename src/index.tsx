@@ -5,7 +5,7 @@ import axios from 'axios';
 
 import { store } from './app/store';
 import reportWebVitals from './reportWebVitals';
-import './index.css';
+import './index.scss';
 import Routes from './Routes';
 
 axios.defaults.baseURL = process.env.REACT_APP_API_URL || '';

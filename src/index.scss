@@ -1,3 +1,8 @@
+@mixin font-size($size, $base: 14) {
+  font-size: $size + px;
+  font-size: calc(($size / $base) * 1rem);
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,6 +10,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  // fonts are coming from material-ui anyways :) Should be calculated as font-size: 1.2857142857rem;
+  @include font-size(18);
 }
 
 code {
