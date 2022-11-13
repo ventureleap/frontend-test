@@ -17,6 +17,7 @@ const CreateUserForm = ({ onSubmit }: { onSubmit: (e: Register) => void }) => (
         <Box
           component="form"
           sx={{
+            // copypaste x3. Ideally forms should be generalized.
             '& .MuiTextField-root': { m: 2, width: '25ch' },
           }}
           autoComplete="off"
