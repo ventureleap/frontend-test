@@ -8,12 +8,19 @@ export default function Header() {
   return (
     <Box position="sticky" top={0}>
       <AppBar position="relative">
-        <Toolbar>
+        <Box
+          sx={{
+            typography: 'body1',
+            '& > :not(style) + :not(style)': {
+              ml: 2,
+            },
+          }}
+        >
           <Link to="/">Applications</Link>
-          <Link to="/about">About</Link>
           <Link to="/users">Users</Link>
+          <Link to="/login">login</Link>
           <Link to="/app">App</Link>
-        </Toolbar>
+        </Box>
       </AppBar>
     </Box>
   );

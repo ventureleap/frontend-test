@@ -2,9 +2,9 @@ import { Form, Field } from 'react-final-form';
 import TextField from '@mui/material/TextField';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
-import { Register } from '../../types';
+import { Login } from '../../types';
 
-const CreateUserForm = ({ onSubmit }: { onSubmit: (e: Register) => void }) => (
+const LoginUserForm = ({ onSubmit }: { onSubmit: (e: Login) => void }) => (
   <Form
     onSubmit={onSubmit}
     render={({ handleSubmit, submitting, pristine }) => (
@@ -21,7 +21,7 @@ const CreateUserForm = ({ onSubmit }: { onSubmit: (e: Register) => void }) => (
           }}
           autoComplete="off"
         >
-          <Field name="firstName">
+          <Field name="username">
             {(props) => (
               <div>
                 <TextField
@@ -34,33 +34,7 @@ const CreateUserForm = ({ onSubmit }: { onSubmit: (e: Register) => void }) => (
               </div>
             )}
           </Field>
-          <Field name="lastName">
-            {(props) => (
-              <div>
-                <TextField
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                  label="Last Name"
-                  required
-                />
-              </div>
-            )}
-          </Field>
-          <Field name="email">
-            {(props) => (
-              <div>
-                <TextField
-                  name={props.input.name}
-                  value={props.input.value}
-                  onChange={props.input.onChange}
-                  label="Email"
-                  type="email"
-                  required
-                />
-              </div>
-            )}
-          </Field>
+
           <Field name="password">
             {(props) => (
               <div>
@@ -76,7 +50,7 @@ const CreateUserForm = ({ onSubmit }: { onSubmit: (e: Register) => void }) => (
             )}
           </Field>
           <Button disabled={submitting || pristine} type="submit">
-            Register
+            Login
           </Button>
         </Box>
       </div>
@@ -84,4 +58,4 @@ const CreateUserForm = ({ onSubmit }: { onSubmit: (e: Register) => void }) => (
   />
 );
 
-export default CreateUserForm;
+export default LoginUserForm;

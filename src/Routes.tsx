@@ -16,9 +16,9 @@ export default function Routes() {
 
         <ReactRouter>
           <Route path="/users" element={<Signup />} />
+          <Route path="/login" element={<Login />} />
 
           {/* <Route path="/about" element={<About />} /> */}
-          {/* <Route path="/login" element={<Login />} /> */}
           {/* <Route path="/app" element={<App />} /> */}
           {/* <Route path="/" element={<Home />} /> */}
         </ReactRouter>

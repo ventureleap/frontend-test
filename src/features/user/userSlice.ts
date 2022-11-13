@@ -1,31 +1,33 @@
 import { createAsyncThunk, createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { RootState, AppThunk } from '../../app/store';
-import { Register } from '../../types';
+import { Login, Register } from '../../types';
 // import { User } from '../../types';
 import { loginUser, registerUser } from './userAPI';
+import Cookies from 'universal-cookie';
 
 const initialState = {
-  username: '',
-  password: '',
-  // status: '',
+  signupStatus: 'idle',
+  loginStatus: 'idle',
 };
 
-export const loginAsync = createAsyncThunk('user/login', async (user) => {
-  // @ts-ignore
-  const response = await loginUser(user);
-  // The value we return becomes the `fulfilled` action payload
-  return response.data;
-});
-
-export const signUpAsync = createAsyncThunk(
+export const loginAsync = createAsyncThunk(
   'user/login',
+  async (user: Login) => {
+    const response = await loginUser(user);
+    return response.data;
+  }
+);
+
+// ideally a separate reducer in the future
+export const signupAsync = createAsyncThunk(
+  'user/signup',
   async (user: Register) => {
-    // I didn't undestand at what point do I pass email/firstname/lastname, but nvm
+    // I didn't understand at what point do I pass email/firstname/lastname, so just used an example fields
     const response = await registerUser({
       username: user.firstName,
       password: user.password,
     });
-    // The value we return becomes the `fulfilled` action payload
+
     return response.data;
   }
 );
@@ -36,17 +38,30 @@ export const userSlice = createSlice({
   reducers: {},
   extraReducers: (builder) => {
     builder
+      .addCase(signupAsync.pending, (state) => {
+        state.signupStatus = 'loading';
+      })
+      .addCase(signupAsync.fulfilled, (state, action) => {
+        state.signupStatus = `success, ${JSON.stringify(action.payload)}`;
+      })
+      .addCase(signupAsync.rejected, (state) => {
+        state.signupStatus = 'failed';
+      })
       .addCase(loginAsync.pending, (state) => {
-        // state.status = 'loading';
+        state.loginStatus = 'loading';
       })
       .addCase(loginAsync.fulfilled, (state, action) => {
-        // state.status = 'idle';
-        // state.value += action.payload;
+        state.loginStatus = `success, ${JSON.stringify(action.payload)}`;
+
+        new Cookies().set('SessionId', action.payload.session);
       })
       .addCase(loginAsync.rejected, (state) => {
-        // state.status = 'failed';
+        state.loginStatus = 'failed';
       });
   },
 });
+
+export const selectSignupStatus = (state: RootState) => state.user.signupStatus;
+export const selectLoginStatus = (state: RootState) => state.user.loginStatus;
 
 export default userSlice.reducer;
