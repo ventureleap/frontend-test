@@ -5,8 +5,8 @@ import { createApplication, getApplications } from './applicationsAPI';
 
 const initialState = {
   applications: [],
-  applicationsStatus: 'idle',
-  createApplicationStatus: 'idle',
+  applicationsStatus: 'idle', // should be a enum
+  createApplicationStatus: 'idle', // should be a enum
 };
 
 export const getApplicationsAsync = createAsyncThunk(
