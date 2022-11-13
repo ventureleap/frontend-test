@@ -2,7 +2,27 @@ import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
+import { ListItem, ListItemText } from '@mui/material';
+
+const navigation = [
+  {
+    label: 'Users',
+    path: '/users',
+  },
+  {
+    label: 'Login',
+    path: '/login',
+  },
+  {
+    label: 'Applications',
+    path: '/',
+  },
+  {
+    label: 'App',
+    path: '/app',
+  },
+];
 
 export default function Header() {
   return (
@@ -12,14 +32,21 @@ export default function Header() {
           sx={{
             typography: 'body1',
             '& > :not(style) + :not(style)': {
-              ml: 2,
+              m: 2,
             },
           }}
         >
-          <Link to="/">Applications</Link>
-          <Link to="/users">Users</Link>
-          <Link to="/login">login</Link>
-          <Link to="/app">App</Link>
+          {navigation.map((item, i) => (
+            <NavLink
+              style={({ isActive }) => ({
+                textDecoration: isActive ? 'underline' : 'none',
+              })}
+              key={item.path}
+              to={item.path}
+            >
+              {item.label}
+            </NavLink>
+          ))}
         </Box>
       </AppBar>
     </Box>
