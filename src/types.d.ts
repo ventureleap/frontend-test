@@ -10,3 +10,11 @@ export interface Register {
   email: string;
   password: string;
 }
+
+export interface Application {
+  id: string;
+  name: string;
+  secret: string;
+  lang: string;
+  version: string;
+}

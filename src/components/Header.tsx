@@ -1,9 +1,6 @@
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
-import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
-import { Link, NavLink } from 'react-router-dom';
-import { ListItem, ListItemText } from '@mui/material';
+import { NavLink } from 'react-router-dom';
 
 const navigation = [
   {
@@ -15,12 +12,12 @@ const navigation = [
     path: '/login',
   },
   {
-    label: 'Applications',
-    path: '/',
+    label: 'Create Application',
+    path: '/create',
   },
   {
-    label: 'App',
-    path: '/app',
+    label: 'Applications',
+    path: '/applications',
   },
 ];
 
