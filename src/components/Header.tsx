@@ -23,7 +23,8 @@ const navigation = [
 
 export default function Header() {
   return (
-    <Box position="sticky" top={0}>
+    // zIndex 1 is lower than inputs, hence 10. Works from 2.
+    <Box position="sticky" top={0} zIndex={10}>
       <AppBar position="relative">
         <Box
           sx={{
