@@ -10,7 +10,6 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  // fonts are coming from material-ui anyways :) Should be calculated as font-size: 1.2857142857rem;
   @include font-size(18);
 }
 
