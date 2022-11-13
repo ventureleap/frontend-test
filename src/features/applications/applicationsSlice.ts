@@ -11,7 +11,7 @@ export const getApplicationsAsync = createAsyncThunk(
   'applications/list',
   async () => {
     const response = await getApplications();
-    return response;
+    return response.data;
   }
 );
 

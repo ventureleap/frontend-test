@@ -1,7 +1,5 @@
 import axios from 'axios';
 
-export async function getApplications() {
-  const response = await axios.get('/applications');
-
-  return await response.data;
+export function getApplications() {
+  return axios.get('/applications');
 }
