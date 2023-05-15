@@ -53,7 +53,7 @@ User
   
   ```
   {
-  "username":"fred",
+  "email":"fred",
   "password":"fred"
   }
   ```
@@ -80,6 +80,14 @@ User
 + ***User info***
 
   [GET] https://demo-front.probatix.de/api/users (need security token)
+
+
++ ***Reset sandbox***
+
+  Simply delete the user (given that you have the credentials)
+
+  [DELETE] https://demo-front.probatix.de/api/users/{user_id} (need security token)
+
 
 Application
 ---
