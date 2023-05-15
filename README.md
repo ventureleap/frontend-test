@@ -31,6 +31,7 @@ Hope you will have fun !
 + create application list page - using API endpoint
 + display application page - using API endpoint (/applications)
 + display current active navigation breadcrumb
++ Add a few tests to cover your work
 
 ---
 **CSS Part:**
