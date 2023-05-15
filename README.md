@@ -41,13 +41,14 @@ Hope you will have fun !
 ---
 MOCKED API ROUTES
 ===
+https://demo-front.probatix.de/api/docs
 
 User
 ---
 
 + ***Register user***
 
-  [POST] https://frontend-test.getsandbox.com/users
+  [POST] https://demo-front.probatix.de/api/register
   
   ```
   {
@@ -57,7 +58,7 @@ User
   ```
 + ***Login***
 
-  [POST] https://frontend-test.getsandbox.com/users/login
+  [POST] https://demo-front.probatix.de/api/login
 
   ```
   {
@@ -65,19 +66,26 @@ User
   "password":"fred"
   }
   ```
-  => Session ID stored in a cookie : sessionId=[uuid]
+  => you get a token back :
+  ```
+  {
+  "user": "string",
+  "token": "3d84bf59f0a9ed10abb735227c6702fe"
+  }
+  ```
+  You can add this token to `X-AUTH-TOKEN` header and access protected endpoint:
 
 
-+ ***User info*** 
++ ***User info***
 
-  [GET] https://frontend-test.getsandbox.com/users (need Auth Cookies)
+  [GET] https://demo-front.probatix.de/api/users (need security token)
 
 Application
 ---
 
 + ***Add application*** 
 
-  [POST] https://frontend-test.getsandbox.com/applications (need Auth Cookies)
+  [POST] https://demo-front.probatix.de/api/applications (need security token)
   ```
   {
   "id": "1",
@@ -89,16 +97,16 @@ Application
   ```
 + ***List application***
 
-  [GET] https://frontend-test.getsandbox.com/applications (need Auth Cookies)
+  [GET] https://demo-front.probatix.de/api/applications (need security token)
   
   Param:
   + lang : ```?lang=php```
-  + version: ```?lang=version```
+  + version: ```?version=1```
 
 
 + ***Update application***
     
-  [PUT] https://frontend-test.getsandbox.com/applications/[id] (need Auth Cookies)
+  [PUT] https://demo-front.probatix.de/api/applications (need security token)
     ```
     {
     "username":"admin"
@@ -107,15 +115,9 @@ Application
 
 + ***Delete application***
 
-  [DELETE] https://frontend-test.getsandbox.com/applications/[id]  (need Auth Cookies)
+  [DELETE] https://demo-front.probatix.de/api/applications (need security token)
 
-Sandbox
----
-+ ***Reset sandbox***
-
-  [DELETE] https://frontend-test.getsandbox.com/sandbox 
----
 
 Please pay attention to flow types and eslint warnings / errors.
 
-You can of course use typescript.
+You can of course use typescript (preferred).
