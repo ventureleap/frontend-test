@@ -2,9 +2,11 @@
 ---
 ### FRONT END DEVELOPER TEST
 ***
-We prepared a Simple react & webpack project for our recruitment process and added as much love as we do in our daily projects.
+We prepared a Simple React & webpack project for our recruitment process and added as much love as we do in our daily projects.
 
-Clone this clean repository into your workspace, do your magic and create pull request.
+Clone this clean repository into your workspace, do your magic and create a pull request.
+
+Feel free to add features that you consider missing. You are the magician!
 
 Hope you will have fun !
 
