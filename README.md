@@ -14,13 +14,14 @@ Hope you will have fun !
 **STACK:**
 ---
 + yarn
-+ flow
-+ webpack
-+ react
++ react (functional components)
 + redux
-+ redux-thunk
-+ scss (bem methodology)
-+ es6
+
+Nice to use:
++ context
++ webpack
++ Styled components
++ es6 or ts
 
 **TODO:**
 ---
