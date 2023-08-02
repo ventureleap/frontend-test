@@ -16,10 +16,10 @@ Hope you will have fun !
 + yarn
 + react (functional components)
 + redux
++ webpack
 
 Nice to use:
 + context
-+ webpack
 + Styled components
 + es6 or ts
 
